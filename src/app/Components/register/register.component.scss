@@ -1,0 +1,69 @@
+.mainContent {
+  margin: 80px auto;
+  padding: 50px;
+  max-width: 1000px;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 8px;
+  display: flex;
+}
+
+.subHeading{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+mat-form-field{
+    margin-right: 10px;
+    width:250px ;
+}
+.input ::placeholder{
+    text-align: center;
+}
+
+.emailSection{
+    width:510px ;
+}
+
+.passwordSection{
+    margin-top:20px ;
+}
+
+.leftPart{
+ width: 65%;
+}
+
+.rightPart{
+width: 35%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.registerImg{
+ width: 200px;
+ height: 200px;
+}
+.emailHint{
+    font-size: 12px;
+}
+.passwordHint{
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.checkBox{
+    margin-left: 10px;
+}
+.buttonsPart{
+    margin-top: 80px;
+    display: flex;
+
+}
+.submitBtn{
+    margin-left: 52%;
+}

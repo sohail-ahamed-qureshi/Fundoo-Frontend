@@ -1,0 +1,54 @@
+<section class="mainContent">
+  <div class="leftPart">
+    <div class="formheader">
+      <app-logo></app-logo>
+      <p class="subHeading">Create your Fundoo Account</p>
+    </div>
+    <div class="formInput">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+      <div class="emailSection">
+        <mat-form-field class="emailSection" appearance="outline">
+          <mat-label>Your email address</mat-label>
+          <input class="input-group" matInput />
+          <mat-icon matSuffix></mat-icon>
+          <mat-hint class="emailHint"
+            >You can use letters, numbers & periods</mat-hint
+          >
+        </mat-form-field>
+      </div>
+      <div class="passwordSection">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-hint class="passwordHint"
+          >You 8 or more characters with a mix of letters, numbers &
+          symbols</mat-hint
+        >
+      </div>
+
+      <mat-checkbox class="checkBox">Show Password</mat-checkbox>
+      <div class="buttonsPart">
+        <button mat-button color="primary">Sign in instead</button>
+        <button class="submitBtn" mat-raised-button color="primary">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div class="rightPart">
+    <img class="registerImg" src="assets\registerImage.jpeg" alt="" srcset="" />
+    <p>Quick Notes, To-do List, Reminders</p>
+  </div>
+</section>
