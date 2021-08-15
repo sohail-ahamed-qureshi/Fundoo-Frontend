@@ -13,9 +13,11 @@ import { LogoComponent } from './Components/logo/logo.component';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import {  ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+// import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, LogoComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, LogoComponent, ForgotPasswordComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
