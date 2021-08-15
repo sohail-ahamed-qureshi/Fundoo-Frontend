@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LogoComponent } from './Components/logo/logo.component';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatButtonModule} from '@angular/material/button'; 
+import {  ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, RegisterComponent, LoginComponent, LogoComponent],
@@ -23,7 +24,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatIconModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,48 +4,57 @@
       <app-logo></app-logo>
       <p class="subHeading">Create your Fundoo Account</p>
     </div>
-    <div class="formInput">
+    <form [formGroup]= "form" (ngSubmit)="onSubmit()">
       <div>
         <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
-          <input matInput />
+          <input matInput formControlName="firstName" class="form-control" autocomplete="off" type="text" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
-          <input matInput />
+          <input matInput formControlName="lastName" class="form-control" autocomplete="off" type="text" />
         </mat-form-field>
+      </div>
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name and Last Name is required</div>
       </div>
       <div class="emailSection">
         <mat-form-field class="emailSection" appearance="outline">
           <mat-label>Your email address</mat-label>
-          <input class="input-group" matInput />
+          <input class="input" formControlName="email" class="form-control" matInput type="email" />
           <mat-icon matSuffix></mat-icon>
-          <mat-hint class="emailHint"
-            >You can use letters, numbers & periods</mat-hint
-          >
+          <mat-hint class="emailHint">You can use letters, numbers & periods</mat-hint>
         </mat-form-field>
       </div>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+    </div>
       <div class="passwordSection">
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput />
+          <input matInput [(ngModel)]="passwordInput" formControlName="password" class="form-control" autocomplete="off" type="password" />
         </mat-form-field>
+       
         <mat-form-field appearance="outline">
           <mat-label>Confirm</mat-label>
-          <input matInput />
+          <input matInput formControlName="confirmpassword" class="form-control" autocomplete="off" />
         </mat-form-field>
         <mat-hint class="passwordHint"
-          >You 8 or more characters with a mix of letters, numbers &
+          >Use 8 or more characters with a mix of letters, numbers &
           symbols</mat-hint
         >
       </div>
-
-      <mat-checkbox class="checkBox">Show Password</mat-checkbox>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+    </div>
+      <mat-checkbox class="checkBox" (click)="OnCheck()" >Show Password</mat-checkbox>
       <div class="buttonsPart">
         <button mat-button color="primary">Sign in instead</button>
-        <button class="submitBtn" mat-raised-button color="primary">Submit</button>
+        <button class="submitBtn" mat-raised-button (click) = "onSubmit()" color="primary" >
+          Submit
+        </button>
       </div>
-    </div>
+    </form>
   </div>
   <div class="rightPart">
     <img class="registerImg" src="assets\registerImage.jpeg" alt="" srcset="" />
