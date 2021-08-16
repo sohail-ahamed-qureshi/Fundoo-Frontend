@@ -1,12 +1,12 @@
-<section class="mainContent">
+<section class="mainContent" fxFlex.xs = 100 fxFlex.md = 80>
   <div>
     <app-logo></app-logo>
     <h2>Sign in</h2>
     <p>Use your Fundoo Account</p>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="OnSignin()">
-    <div>
-      <mat-form-field appearance="outline">
+    <div fxLayout="column" fxlayoutGap="32px">
+      <mat-form-field appearance="outline" >
         <mat-label>Email Address</mat-label>
         <input class="input" formControlName="email" matInput type="email" />
       </mat-form-field>
@@ -16,7 +16,7 @@
         </div>
       </div>
       
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline"  >
         <mat-label>Password</mat-label>
         <input class="input" formControlName="password" matInput type="password" autocomplete="off" />
       </mat-form-field>
@@ -28,8 +28,8 @@
     </div>
     <p class="showPassword"><input class="input" type="checkbox" /> Show password </p>
 
-    <div class="buttonsPart">
-      <button mat-button color="primary">Create account</button>
+    <div class="buttonsPart" >
+      <button mat-button routerLink= "/signup" color="primary">Create account</button>
       <button class="submitBtn" mat-raised-button color="primary">
         Sign in
       </button>
