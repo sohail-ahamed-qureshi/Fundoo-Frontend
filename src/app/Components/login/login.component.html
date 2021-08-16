@@ -4,18 +4,35 @@
     <h2>Sign in</h2>
     <p>Use your Fundoo Account</p>
   </div>
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Email Address</mat-label>
-      <input class="input" matInput type="email" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input class="input" matInput type="password" autocomplete="off" />
+  <form [formGroup]="loginForm" (ngSubmit)="OnSignin()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input class="input" formControlName="email" matInput type="email" />
       </mat-form-field>
-  </div>
-  <div class="buttonsPart">
-    <button mat-button color="primary">Create account</button>
-    <button class="submitBtn" mat-raised-button color="primary">Sign in</button>
-  </div>
+      <div class="error">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required"><mat-icon matPrefix>error</mat-icon>Enter a valid email</div>
+        </div>
+      </div>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input class="input" formControlName="password" matInput type="password" autocomplete="off" />
+      </mat-form-field>
+      <div class="error" >
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback"  >
+          <div *ngIf="f.password.errors.required" ><mat-icon matPrefix>error</mat-icon>Enter a valid password</div>
+        </div>
+      </div>
+    </div>
+    <p class="showPassword"><input class="input" type="checkbox" /> Show password </p>
+
+    <div class="buttonsPart">
+      <button mat-button color="primary">Create account</button>
+      <button class="submitBtn" mat-raised-button color="primary">
+        Sign in
+      </button>
+    </div>
+  </form>
 </section>
