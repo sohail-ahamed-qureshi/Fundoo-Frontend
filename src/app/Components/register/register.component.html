@@ -1,62 +1,57 @@
-<section class="mainContent">
+<section class="mainContent" fxFlex.xs=100 >
   <div class="leftPart">
-    <div class="formheader">
+    <div >
       <app-logo></app-logo>
-      <p class="subHeading">Create your Fundoo Account</p>
+      <p  class="subHeading">Create your Fundoo Account</p>
     </div>
     <form [formGroup]= "form" (ngSubmit)="onSubmit()">
       <div>
         <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstName" class="form-control" autocomplete="off" type="text" />
+          <input matInput formControlName="firstName"  autocomplete="off" type="text" />
+          <mat-hint *ngIf="submitted && f.firstName.errors" class=" firstName invalid-feedback">First and Last Name are required</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
           <input matInput formControlName="lastName" class="form-control" autocomplete="off" type="text" />
         </mat-form-field>
       </div>
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">First Name and Last Name is required</div>
-      </div>
       <div class="emailSection">
-        <mat-form-field class="emailSection" appearance="outline">
+        <mat-form-field   class="emailSection" appearance="outline">
           <mat-label>Your email address</mat-label>
-          <input class="input" formControlName="email" class="form-control" matInput type="email" />
+          <input class="input"  formControlName="email" class="form-control" matInput type="email" />
           <mat-icon matSuffix></mat-icon>
-          <mat-hint class="emailHint">You can use letters, numbers & periods</mat-hint>
+          <mat-hint *ngIf="submitted && f.email.errors" class="emailHint invalid-feedback">Email is required</mat-hint>
+          <mat-hint *ngIf="!submitted && f.email.errors" class="emailHint">You can use letters, numbers & periods</mat-hint>
         </mat-form-field>
       </div>
-      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-    </div>
       <div class="passwordSection">
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="passwordInput" formControlName="password" class="form-control" autocomplete="off" type="password" />
+          <input matInput formControlName="password" class="form-control" autocomplete="off" type="password" />
         </mat-form-field>
        
         <mat-form-field appearance="outline">
           <mat-label>Confirm</mat-label>
           <input matInput formControlName="confirmpassword" class="form-control" autocomplete="off" />
         </mat-form-field>
-        <mat-hint class="passwordHint"
+        <mat-hint *ngIf="!submitted && f.password.errors" class="passwordHint"
           >Use 8 or more characters with a mix of letters, numbers &
-          symbols</mat-hint
-        >
+          symbols</mat-hint>
+          <mat-hint *ngIf="submitted && f.password.errors" class="passwordHint invalid-feedback"
+          >Password is required</mat-hint>
       </div>
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-    </div>
+
       <mat-checkbox class="checkBox" (click)="OnCheck()" >Show Password</mat-checkbox>
-      <div class="buttonsPart">
-        <button mat-button color="primary">Sign in instead</button>
+      <div class="buttonsPart"  >
+        <button mat-button routerLink="/login" color="primary">Sign in instead</button>
         <button class="submitBtn" mat-raised-button (click) = "onSubmit()" color="primary" >
           Submit
         </button>
       </div>
     </form>
   </div>
-  <div class="rightPart">
+  <div  class="rightPart" fxHide.xs fxHide.sm>
     <img class="registerImg" src="assets\registerImage.jpeg" alt="" srcset="" />
     <p>Quick Notes, To-do List, Reminders</p>
   </div>

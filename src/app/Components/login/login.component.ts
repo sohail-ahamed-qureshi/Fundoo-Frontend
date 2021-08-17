@@ -28,12 +28,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
-    console.log('login successful');
-    console.log(JSON.stringify(this.loginForm.value, null));
-    console.log(this.loginForm.value.email);
-    console.log(this.loginForm.value.password);
-    this.userService.loginUser(this.loginForm.value).subscribe()
-
+    let requestPayload = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    }
+    //Call:user service login method
+    this.userService.loginUser(requestPayload).subscribe(response => {
+      console.log(response);
+    });
   }
 }

@@ -9,6 +9,6 @@ export class UserServiceService {
 
   loginUser(data: any){
     console.log("data is", data)
-    return this.httpService.Post('/api/User/Login', data)
+    return this.httpService.Post('User/Login', data, null, false);
   }
 }

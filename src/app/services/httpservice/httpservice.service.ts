@@ -8,9 +8,11 @@ export class HttpserviceService {
   baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
-  Post(url:any, data:any){
+  Post(url:any, data:any, token : any, headers: boolean){
+    //get data and api uri
     console.log(data, url);
-    return this.http.post(this.baseUrl + url, data)
+    //connection to backend  //https://localhost:44333/api +/User/Login
+    return this.http.post(this.baseUrl + url, data);
   }
 
   Get(){}

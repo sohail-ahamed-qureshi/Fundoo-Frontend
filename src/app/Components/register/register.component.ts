@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -15,6 +16,9 @@ import {
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
+  heading!:FlexLayoutModule
+
+  
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -37,6 +41,13 @@ export class RegisterComponent implements OnInit {
     return this.form.controls;
   }
 
+  get error(){
+    if(this.form.invalid){
+      return true;
+    }
+    return false;
+  }
+
   onSubmit() {
     this.submitted = true;
 
@@ -48,9 +59,20 @@ export class RegisterComponent implements OnInit {
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.form.value, null, 4));
   }
-  passwordInput ="";
 
-  OnCheck() {
-    
+  OnCheck(){
+
   }
+
+   passwordInput(){
+    return this.form.get('password');
+  }
+
+   fxDevice(){
+    if(this.heading === 'xs'){
+        return true;
+    }
+    return false;
+  }
+   
 }
