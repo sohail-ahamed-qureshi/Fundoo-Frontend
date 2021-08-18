@@ -65,3 +65,9 @@ mat-icon{
   padding-left: 6%;
   font-size: 14px;
 }
+@media only screen and (max-width: 599px) {
+  .alternative{
+    border: none;
+  }
+}
+

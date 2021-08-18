@@ -15,29 +15,8 @@
 
 .subHeading {
   font-family: "DM Sans", sans-serif;
-  font-size: 32px;
-  margin-bottom: 25px;
-}
-
-mat-form-field {
-  margin-right: 10px;
-  width: 250px;
-}
-
-.emailSection {
-  width: 510px;
-}
-
-.leftPart {
-  width: 65%;
-}
-
-.rightPart {
-  width: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-size: 30px;
+  line-height: 28px;
 }
 
 .registerImg {
@@ -55,8 +34,6 @@ mat-form-field {
   display: block;
 }
 .passwordHint {
-  display: flex;
-  flex-direction: column;
   font-size: 12px;
   margin-left: 6px;
 }
@@ -67,20 +44,14 @@ mat-form-field {
 .checkBox {
   margin-left: 10px;
 }
-.buttonsPart {
-  padding-top: 20px;
-  display: flex;
-}
-.submitBtn {
-  margin-left: 52%;
-}
 
 .invalid-feedback {
   color: tomato;
   font-size: 12px;
   margin-left: 10px;
 }
-
-.alternative{
-  border: none; 
+@media only screen and (max-width: 599px) {
+  .alternative{
+    border: none;
+  }
 }
