@@ -8,7 +8,7 @@ export class HttpserviceService {
   baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
-  Post(url:any, data:any, token : any, headers: boolean){
+  Login(url:any, data:any, token : any, headers: boolean){
      //connection to backend  //https://localhost:44333/api +/User/Login
     if(url!=null && data != null){
       return this.http.post(this.baseUrl + url, data);
@@ -25,7 +25,12 @@ export class HttpserviceService {
 
   Get(){}
 
-  Put(){}
+  ForgotPassword(url: any, data:any){
+    if(url !== null){
+      return this.http.post(this.baseUrl+ url, data);
+    }
+    return null;
+  }
 
   Delete(){}
 }

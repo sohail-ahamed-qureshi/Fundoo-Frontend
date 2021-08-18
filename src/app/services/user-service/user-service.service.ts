@@ -8,10 +8,14 @@ export class UserServiceService {
   constructor(private httpService: HttpserviceService) { }
 
   loginUser(data: any){
-    return this.httpService.Post('User/Login', data, null, false);
+    return this.httpService.Login('User/Login', data, null, false);
   }
 
   AddUser(data: any){
     return this.httpService.AddUser('User/Register', data, null, false);
+  }
+
+  ForgotPassword(data: any){
+    return this.httpService.ForgotPassword('User/forgotpassword', data);
   }
 }

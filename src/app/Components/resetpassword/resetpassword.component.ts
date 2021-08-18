@@ -4,35 +4,33 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-resetpassword',
   templateUrl: './resetpassword.component.html',
-  styleUrls: ['./resetpassword.component.scss']
+  styleUrls: ['./resetpassword.component.scss'],
 })
 export class ResetpasswordComponent implements OnInit {
-  resetPasswordForm!:FormGroup;
+  resetPasswordForm!: FormGroup;
   submitted = false;
-  showPassword= false;
-  constructor(private formBuilder : FormBuilder) { }
+  showPassword = false;
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      newPassword:['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword:['', [Validators.required]]
-    })
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required]],
+    });
   }
 
-  get f(){
+  get f() {
     return this.resetPasswordForm.controls;
   }
 
-  OnCheck(){
-    this.showPassword= !this.showPassword;
+  OnCheck() {
+    this.showPassword = !this.showPassword;
   }
 
-  OnSubmit(){
+  OnSubmit() {
     this.submitted = true;
     if (this.resetPasswordForm.invalid) {
       return;
     }
-    alert('SUCCESS \n\n' + JSON.stringify(this.resetPasswordForm.value, null));
   }
-
 }
