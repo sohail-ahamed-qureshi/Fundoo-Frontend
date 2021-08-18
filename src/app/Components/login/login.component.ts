@@ -9,6 +9,7 @@ import { UserServiceService} from '../../services/user-service/user-service.serv
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
+  showPwd:boolean = false;
   constructor(private formbuilder: FormBuilder, private userService: UserServiceService) {}
 
   ngOnInit() {
@@ -22,6 +23,10 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  OnCheck(){
+    this.showPwd= !this.showPwd;
+  }
+
   OnSignin() {
     // method on sign in
     this.submitted = true;
@@ -33,8 +38,8 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
     //Call:user service login method
-    this.userService.loginUser(requestPayload).subscribe(response => {
-      console.log(response);
+    this.userService.loginUser(requestPayload)?.subscribe(response => {
+      console.log(response)
     });
   }
 }

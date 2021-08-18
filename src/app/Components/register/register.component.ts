@@ -1,3 +1,4 @@
+import { UserServiceService } from './../../services/user-service/user-service.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -17,10 +18,8 @@ export class RegisterComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
   heading!:FlexLayoutModule
-
-  
-
-  constructor(private formBuilder: FormBuilder) {}
+  show = false;
+  constructor(private formBuilder: FormBuilder, private userService : UserServiceService) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -55,13 +54,20 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.form.value, null, 4));
+    let reqPayload = {
+      firstName: this.form.value.firstName, 
+      lastName: this.form.value.lastName, 
+      email: this.form.value.email, 
+      password: this.form.value.password, 
+      confirmPassword: this.form.value.confirmpassword, 
+    }
+    return this.userService.AddUser(reqPayload)?.subscribe(response =>
+      console.log(response),
+      )
   }
 
   OnCheck(){
-
+    this.show = !this.show;
   }
 
    passwordInput(){

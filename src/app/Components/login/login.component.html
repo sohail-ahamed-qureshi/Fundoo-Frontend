@@ -5,28 +5,22 @@
     <p>Use your Fundoo Account</p>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="OnSignin()">
-    <div fxLayout="column" fxlayoutGap="32px">
+    <div class="inputSection">
       <mat-form-field appearance="outline" >
         <mat-label>Email Address</mat-label>
         <input class="input" formControlName="email" matInput type="email" />
+        <mat-hint *ngIf="submitted && f.email.errors && f.email.errors.required" class="invalid-feedback">
+          <mat-icon matPrefix >error</mat-icon> Enter a valid email</mat-hint>
       </mat-form-field>
-      <div class="error">
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required"><mat-icon matPrefix>error</mat-icon>Enter a valid email</div>
-        </div>
-      </div>
-      
-      <mat-form-field appearance="outline"  >
+      <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input class="input" formControlName="password" matInput type="password" autocomplete="off" />
+        <input [type]="showPwd? 'text':'password'" class="input" formControlName="password" matInput type="password" autocomplete="off" />
+        <mat-hint *ngIf="submitted && f.password.errors  && f.password.errors.required" class="invalid-feedback"  >
+        <mat-icon matPrefix >error</mat-icon> Enter a valid password
+        </mat-hint>
       </mat-form-field>
-      <div class="error" >
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback"  >
-          <div *ngIf="f.password.errors.required" ><mat-icon matPrefix>error</mat-icon>Enter a valid password</div>
-        </div>
-      </div>
     </div>
-    <p class="showPassword"><input class="input" type="checkbox" /> Show password </p>
+    <p class="showPassword"><input class="input" (click)="OnCheck()" type="checkbox" /> Show password </p>
 
     <div class="buttonsPart" >
       <button mat-button routerLink= "/signup" color="primary">Create account</button>

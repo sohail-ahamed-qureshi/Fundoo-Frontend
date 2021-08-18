@@ -9,10 +9,18 @@ export class HttpserviceService {
   constructor(private http: HttpClient) { }
 
   Post(url:any, data:any, token : any, headers: boolean){
-    //get data and api uri
-    console.log(data, url);
-    //connection to backend  //https://localhost:44333/api +/User/Login
-    return this.http.post(this.baseUrl + url, data);
+     //connection to backend  //https://localhost:44333/api +/User/Login
+    if(url!=null && data != null){
+      return this.http.post(this.baseUrl + url, data);
+    }
+    return null;
+  }
+
+  AddUser(url: any, data:any, token: any, headers: boolean){
+    if(url !== null){
+      return this.http.post(this.baseUrl+ url, data);
+    }
+    return null;
   }
 
   Get(){}

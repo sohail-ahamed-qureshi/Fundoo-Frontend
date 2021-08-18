@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ResetpasswordComponent implements OnInit {
   resetPasswordForm!:FormGroup;
   submitted = false;
+  showPassword= false;
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit(){
@@ -20,6 +21,10 @@ export class ResetpasswordComponent implements OnInit {
 
   get f(){
     return this.resetPasswordForm.controls;
+  }
+
+  OnCheck(){
+    this.showPassword= !this.showPassword;
   }
 
   OnSubmit(){
