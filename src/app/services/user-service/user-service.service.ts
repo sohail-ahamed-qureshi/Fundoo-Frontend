@@ -1,3 +1,4 @@
+import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
 import {HttpserviceService} from '../httpservice/httpservice.service';
 @Injectable({
@@ -17,5 +18,9 @@ export class UserServiceService {
 
   ForgotPassword(data: any){
     return this.httpService.ForgotPassword('User/forgotpassword', data);
+  }
+
+  ResetPassword(token:any,data: any){
+    return this.httpService.ResetPassword('User/resetpassword/'+token, token, data);
   }
 }
