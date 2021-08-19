@@ -2,6 +2,7 @@ import { UserServiceService } from 'src/app/services/user-service/user-service.s
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-resetpassword',
@@ -13,10 +14,13 @@ export class ResetpasswordComponent implements OnInit {
   submitted = false;
   showPassword = false;
   token: any;
+  durationInSeconds=3;
+  output:any;
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserServiceService,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,6 +38,11 @@ export class ResetpasswordComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  openSnackBar(message: string ){
+    this._snackBar.open(message, 'OK', {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
   OnSubmit() {
     this.submitted = true;
     if (this.resetPasswordForm.invalid) {
@@ -45,7 +54,17 @@ export class ResetpasswordComponent implements OnInit {
     }
     this.token = this.activeRouter.snapshot.paramMap.get('token');
     if (this.token != null) {
-      this.userService.ResetPassword(this.token, reqPayLoad)?.subscribe(res => console.log(res));
-    }
+      this.userService.ResetPassword(this.token, reqPayLoad)?.subscribe(response => {
+        console.log(response);
+        this.output = response;
+        this.openSnackBar(JSON.stringify(this.output.message)
+        );
+      } , (err:any)=>{
+        console.log(err);
+        this.output = err;
+        this.openSnackBar(JSON.stringify(this.output.error));
+      }
+      );
+  }
   }
 }

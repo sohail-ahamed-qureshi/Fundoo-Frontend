@@ -8,6 +8,7 @@ import {
   NgModel,
   Validators,
 } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,10 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   heading!:FlexLayoutModule
   show = false;
-  constructor(private formBuilder: FormBuilder, private userService : UserServiceService) {}
+  output:any;
+  durationInSeconds=3;
+  constructor(private formBuilder: FormBuilder, private userService : UserServiceService,
+    private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -38,6 +42,11 @@ export class RegisterComponent implements OnInit {
   }
   get f() {
     return this.form.controls;
+  }
+  openSnackBar(message: string ){
+    this._snackBar.open(message, 'OK', {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 
   get error(){
@@ -61,8 +70,16 @@ export class RegisterComponent implements OnInit {
       password: this.form.value.password, 
       confirmPassword: this.form.value.confirmpassword, 
     }
-    return this.userService.AddUser(reqPayload)?.subscribe(response =>
-      console.log(response),
+    return this.userService.AddUser(reqPayload)?.subscribe(response =>{
+      console.log(response);
+      this.output = response;
+      this.openSnackBar(JSON.stringify(this.output.message)
+      );
+    } , (err:any)=>{
+      console.log(err);
+      this.output = err;
+      this.openSnackBar(JSON.stringify(this.output.error));
+    }
       )
   }
 

@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 })
 export class HttpserviceService {
   baseUrl = environment.baseUrl;
-  constructor(private http: HttpClient, private headersobject: HttpHeaders) {}
+  constructor(private http: HttpClient) {}
 
   Login(url: any, data: any, token: any, headers: boolean) {
     //connection to backend  //https://localhost:44333/api +/User/Login
@@ -33,10 +33,10 @@ export class HttpserviceService {
   ResetPassword(url: any,  token: any,data: any) {
     if (url != null && token != null) {
       //passing token as headers
-      this.headersobject.set("Authorization", "Bearer " + token);
+     var headersobject = new HttpHeaders().set("Authorization", "Bearer " + token);
       //passing headers in json format
       let httpOptions = {
-        headers : this.headersobject
+        headers : headersobject
       }
       return this.http.put(this.baseUrl + url, data, httpOptions);
     }
