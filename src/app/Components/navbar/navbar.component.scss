@@ -1,0 +1,82 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.logo {
+  width: 45px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.example-app-name {
+  padding-top: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+mat-sidenav-container {
+  border-right: none;
+  transform: 300ms ease-out;
+}
+
+.btnPosition {
+ margin-left: 15px;
+
+}
+
+.navName{
+  font-size: 16px;
+  cursor: pointer;
+  padding-top: 15px;
+  width: 300px;
+  transform: 300ms ease-in-out;
+}
+
+.navlist:hover{
+  background-color: rgba(153, 147, 147, 0.5);
+  border-radius: 0 20px 20px 0;
+}
+.menuBtn , .navBtn{
+  transform: all 3s ease;
+}
+
+.navBtn:hover{
+  color: rgb(255, 255, 255);
+}
+
+.navlist:active{
+  background-color: rgba(236, 222, 96, 0.507);
+}
+
+
+
+
+
+.menuBtn:hover {
+   background-color: rgb(116, 108, 108);
+  color: rgb(255, 255, 255);
+}
