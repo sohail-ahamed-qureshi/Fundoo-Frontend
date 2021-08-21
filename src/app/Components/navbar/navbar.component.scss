@@ -12,6 +12,8 @@
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
+  border: 1px solid black;
+ 
 }
 
 .logo {
@@ -38,10 +40,6 @@
   flex: 1 0 auto;
 }
 
-mat-sidenav-container {
-  border-right: none;
-  transform: 300ms ease-out;
-}
 
 .btnPosition {
  margin-left: 15px;
@@ -52,7 +50,7 @@ mat-sidenav-container {
   font-size: 16px;
   cursor: pointer;
   padding-top: 15px;
-  width: 300px;
+  width: 220px;
   transform: 300ms ease-in-out;
 }
 
@@ -72,11 +70,11 @@ mat-sidenav-container {
   background-color: rgba(236, 222, 96, 0.507);
 }
 
-
-
-
-
 .menuBtn:hover {
-   background-color: rgb(116, 108, 108);
+   background-color: rgba(153, 147, 147, 0.5);
   color: rgb(255, 255, 255);
+}
+
+.mat-sidenav-content{
+  padding: 2.5%;
 }

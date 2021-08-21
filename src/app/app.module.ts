@@ -24,9 +24,13 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatListModule} from '@angular/material/list';
+import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
+import { TakeNoteComponent } from './Components/take-note/take-note.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NotesComponent } from './Components/notes/notes.component'; 
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, LogoComponent, ForgotPasswordComponent, ResetpasswordComponent, NavbarComponent, SidebarComponent, DashboardComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, LogoComponent, ForgotPasswordComponent, ResetpasswordComponent, NavbarComponent, SidebarComponent, DashboardComponent, GetAllNotesComponent, TakeNoteComponent, NotesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +46,8 @@ import {MatListModule} from '@angular/material/list';
     MatSnackBarModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
 
   ],
   providers: [],

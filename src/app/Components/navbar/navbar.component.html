@@ -2,7 +2,7 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar  class="example-toolbar">
     <div fxLayout="row" fxLayoutAlign="center center"  fxLayoutGap="10px">
-      <button class="menuBtn" mat-icon-button (click)="isExpandable=!isExpandable" ><mat-icon>menu</mat-icon></button>
+      <button class="menuBtn" mat-icon-button  (click)="isExpandable=!isExpandable" ><mat-icon>menu</mat-icon></button>
       <div  routerLink='/home' fxLayout="row" fxLayoutAlign="center center" >
         <img class="logo" src="../../../assets/FundooNote.ico" alt="Fundoo note logo">
         <app-logo class="example-app-name" ></app-logo> 
@@ -13,12 +13,12 @@
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container"  [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav opened="true" mode="side"  
+      <mat-sidenav #snav opened="true"  [mode]="mobileQuery.matches? 'over' : 'side'"
                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list (mouseover)="isExpandable=true"  (mouseleave)="isExpandable=false">
-          <div class="navlist" fxLayout="row" (mouseover)="isExpandable=true"  fxLayoutAlign="start center" fxLayoutGap="20px"  mat-list-item routerLink="/home"> 
+          <div class="navlist active" fxLayout="row" (mouseover)="isExpandable=true" routerLink='/home' fxLayoutAlign="start center" fxLayoutGap="20px"  mat-list-item routerLink="/home"> 
             <button class="navBtn btnPosition"  mat-icon-button  (mouseover)="isExpandable=true"  ><mat-icon>lightbulb</mat-icon></button>
-            <p class="navName " *ngIf="isExpandable"  >Notes</p>
+            <p class="navName  " *ngIf="isExpandable"  >Notes</p>
           </div>
           <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"  fxLayoutGap="20px"  mat-list-item routerLink="/home"> 
             <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true"  ><mat-icon>notifications</mat-icon></button>
@@ -39,8 +39,8 @@
         </mat-nav-list>
       </mat-sidenav>
   
-      <mat-sidenav-content>
-        <p *ngFor="let content of fillerContent">{{content}}</p>
+      <mat-sidenav-content fxLayout="column" >
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

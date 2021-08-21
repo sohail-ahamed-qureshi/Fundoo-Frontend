@@ -1,20 +1,33 @@
+import { NotesComponent } from './Components/notes/notes.component';
+import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
+import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  {path: '', redirectTo:'login', pathMatch:'full'},
   {path: 'signup', component:RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'resetpassword/:token', component: ResetpasswordComponent},
-  {path: 'home', component: DashboardComponent,
-
-  children:[
-    {path:'', component:DashboardComponent}
+  {
+    path: 'home', 
+    component: DashboardComponent,
+    children:[
+      {
+      path:'', 
+      redirectTo:'notes',
+      pathMatch:'full'
+      },
+      {
+      path:'notes',
+     component:NotesComponent
+    }
   ]
 
 }
