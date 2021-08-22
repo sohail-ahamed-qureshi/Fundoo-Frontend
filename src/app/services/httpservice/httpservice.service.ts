@@ -42,4 +42,13 @@ export class HttpserviceService {
     }
     return null;
   }
+
+  GetAllNotes(url: any){
+    let token = localStorage.getItem('token');
+    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
+    let httpOptions = {
+      headers : headerObject
+    }
+     return this.http.get(this.baseUrl+url,httpOptions);
+  }
 }

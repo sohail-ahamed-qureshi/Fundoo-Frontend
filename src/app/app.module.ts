@@ -28,6 +28,7 @@ import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NotesComponent } from './Components/notes/notes.component';
 import { AuthguardService } from './services/authguard.service';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { AuthguardService } from './services/authguard.service';
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

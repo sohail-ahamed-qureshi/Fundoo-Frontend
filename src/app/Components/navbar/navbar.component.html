@@ -13,11 +13,11 @@
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container"  [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav #snav opened="true"  [mode]="mobileQuery.matches? 'over' : 'side'"
+      <mat-sidenav #snav opened="true"  mode="side"
                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list (mouseover)="isExpandable=true"  (mouseleave)="isExpandable=false">
           <div class="navlist active" fxLayout="row" (mouseover)="isExpandable=true" routerLink='/home' fxLayoutAlign="start center" fxLayoutGap="20px"  mat-list-item routerLink="/home"> 
-            <button class="navBtn btnPosition"  mat-icon-button  (mouseover)="isExpandable=true"  ><mat-icon>lightbulb</mat-icon></button>
+            <button class="navBtn btnPosition"  mat-icon-button   ><mat-icon>lightbulb</mat-icon></button>
             <p class="navName  " *ngIf="isExpandable"  >Notes</p>
           </div>
           <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"  fxLayoutGap="20px"  mat-list-item routerLink="/home"> 

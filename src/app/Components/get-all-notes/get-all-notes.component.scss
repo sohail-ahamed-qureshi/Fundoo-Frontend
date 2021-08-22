@@ -1,0 +1,42 @@
+.mainSection {
+  margin-top: 20px;
+}
+
+.card {
+  width: 250px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 8px;
+  transform: all 3s ease-in;
+  // .pinBtn, mat-card-actions{
+  //     display: none;
+  // }
+}
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // .pinBtn, mat-card-actions{
+  //     display: block;
+  // }
+}
+
+mat-card-title {
+  
+}
+
+mat-icon{
+    font-size: 18px;
+  }
+
+.my-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  padding-top: 4px;
+  border: none;
+  background-color: transparent;
+}
+
+.my-button:hover{
+    background-color: rgba(153, 147, 147, 0.5);
+  }

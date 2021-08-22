@@ -1,1 +1,36 @@
-<p>get-all-notes works!</p>
+<div class="mainSection"  fxFlex *ngFor="let note of notes; let i = index">
+  <mat-card class="card" >
+    <mat-card-header fxLayout="row" fxLayoutAlign="space-between">
+      <mat-card-title>{{ note.title }}</mat-card-title>
+      <button class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ note.description }}
+      </p>
+    </mat-card-content>
+    <!-- labels here -->
+    <mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+         <div class="container">
+             <button class="my-button"> <mat-icon>notification_add</mat-icon></button>
+           </div>
+           <div class="container">
+             <button class="my-button"> <mat-icon>person_add_alt</mat-icon></button>
+           </div>
+           <div class="container">
+             <button class="my-button"><mat-icon>palette</mat-icon></button>
+           </div>
+           <div class="container">
+             <button class="my-button"> <mat-icon>image</mat-icon></button>
+           </div>
+           <div class="container">
+             <button class="my-button"><mat-icon>archive</mat-icon></button>
+           </div>
+           <div class="container">
+             <button class="my-button"> <mat-icon>more_vert</mat-icon></button>
+           </div>
+       </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

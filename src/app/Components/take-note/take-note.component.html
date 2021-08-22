@@ -1,39 +1,48 @@
-<div class="takeNoteSection" fxFlex=40% fxFlex.xs=80 fxLayout="row" *ngIf="!isOpen"  (click)="isOpen=!isOpen" fxLayoutAlign="space-between center" >
-    <p>Take a note..</p>
+<div
+  class="takeNoteSection"
+  fxFlex="40%"
+  fxFlex.xs="80"
+  fxLayout="row"
+  *ngIf="!isOpen"
+  (click)="isOpen = !isOpen"
+  fxLayoutAlign="space-between center"
+>
+  <p>Take a note..</p>
 </div>
 
-<div *ngIf="isOpen" class="takeNoteSection" fxFlex=40% fxFlex.xs=80 >
+<div *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
     <input *ngIf="isOpen" placeholder="Title" />
     <mat-icon>push_pin</mat-icon>
   </div>
-  <div class="notesBody" >
+  <div class="notesBody">
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <input type="text" placeholder="Take a note.." />
     </div>
     <div class="noteAction" fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutGap="10px">
+      <div fxLayout="row" fxLayoutGap="32px">
         <div class="container">
-            <button class="my-button"> <mat-icon>notification_add</mat-icon></button>
-          </div>
-          <div class="container">
-            <button class="my-button"> <mat-icon>person_add_alt</mat-icon></button>
-          </div>
-          <div class="container">
-            <button class="my-button"><mat-icon>palette</mat-icon></button>
-          </div>
-          <div class="container">
-            <button class="my-button"> <mat-icon>image</mat-icon></button>
-          </div>
-          <div class="container">
-            <button class="my-button"><mat-icon>archive</mat-icon></button>
-          </div>
-          <div class="container">
-            <button class="my-button"> <mat-icon>more_vert</mat-icon></button>
-          </div>
+          <button class="my-button"><mat-icon>notification_add</mat-icon>
+          </button>
+        </div>
+        <div class="container">
+          <button class="my-button"><mat-icon>person_add_alt</mat-icon></button>
+        </div>
+        <div class="container">
+          <button class="my-button"><mat-icon>palette</mat-icon></button>
+        </div>
+        <div class="container">
+          <button class="my-button"><mat-icon>image</mat-icon></button>
+        </div>
+        <div class="container">
+          <button class="my-button"><mat-icon>archive</mat-icon></button>
+        </div>
+        <div class="container">
+          <button class="my-button"><mat-icon>more_vert</mat-icon></button>
+        </div>
       </div>
       <div>
-        <button mat-button (click)="isOpen=!isOpen" >Close</button>
+        <button mat-button (click)="isOpen = !isOpen">Close</button>
       </div>
     </div>
   </div>
