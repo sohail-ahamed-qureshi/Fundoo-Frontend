@@ -10,6 +10,10 @@ export class GetAllNotesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
+  //get all notes method here
+  
 
 }

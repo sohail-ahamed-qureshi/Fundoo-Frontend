@@ -1,3 +1,4 @@
+
 import { NotesComponent } from './Components/notes/notes.component';
 import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { TakeNoteComponent } from './Components/take-note/take-note.component';
@@ -8,6 +9,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { NgModule, Component } from '@angular/core';
 import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from '../app/authentication.guard'
+
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch:'full'},
@@ -18,6 +21,7 @@ const routes: Routes = [
   {
     path: 'home', 
     component: DashboardComponent,
+    canActivate:[AuthenticationGuard],
     children:[
       {
       path:'', 
