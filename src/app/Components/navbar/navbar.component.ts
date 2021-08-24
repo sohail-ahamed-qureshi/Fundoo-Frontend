@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnDestroy, OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rout: Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -30,6 +31,22 @@ export class NavbarComponent implements OnDestroy, OnInit {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  routeToReminder(){
+    this.rout.navigateByUrl('home/reminder');
+  }
+
+  routeToHome(){
+    this.rout.navigateByUrl('home');
+  }
+
+  routeToArchive(){
+    this.rout.navigateByUrl('home/archive');
+  }
+
+  routeToTrash(){
+    this.rout.navigateByUrl('home/trash');
   }
 
 }

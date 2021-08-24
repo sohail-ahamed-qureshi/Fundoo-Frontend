@@ -13,4 +13,8 @@ export class NoteService {
   GetAllNotes(url:any){
    return this.http.GetAllNotes( url);
   }
+
+  CreateNote(url:any, data:any){
+    return this.http.CreateNote(url,data);
+  }
 }

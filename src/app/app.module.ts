@@ -27,9 +27,11 @@ import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.c
 import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NotesComponent } from './Components/notes/notes.component';
-import { AuthguardService } from './services/authguard.service';
 import {MatCardModule} from '@angular/material/card';
-
+import { ReminderNotesComponent } from './Components/reminder-notes/reminder-notes.component';
+import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
+import { ArhiveNotesComponent } from './Components/arhive-notes/arhive-notes.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,9 @@ import {MatCardModule} from '@angular/material/card';
     GetAllNotesComponent,
     TakeNoteComponent,
     NotesComponent,
+    ReminderNotesComponent,
+    TrashNotesComponent,
+    ArhiveNotesComponent,
 
   ],
   imports: [
@@ -64,7 +69,8 @@ import {MatCardModule} from '@angular/material/card';
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],

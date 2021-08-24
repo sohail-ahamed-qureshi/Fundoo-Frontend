@@ -5,45 +5,55 @@
   fxLayout="row"
   *ngIf="!isOpen"
   (click)="isOpen = !isOpen"
-  fxLayoutAlign="space-between center"
->
+  fxLayoutAlign="space-between center">
   <p>Take a note..</p>
 </div>
 
-<div *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
+
+<form [formGroup]="takeNote" *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
-    <input *ngIf="isOpen" placeholder="Title" />
-    <mat-icon>push_pin</mat-icon>
+    <input *ngIf="isOpen" formControlName="title"  placeholder="Title" />
+    <mat-icon [class.clicked]="isPin" (click)="isPin=!isPin" >push_pin</mat-icon>
   </div>
-  <div class="notesBody">
+  <div class="notesBody" >
     <div fxLayout="row" fxLayoutAlign="space-between center">
-      <input type="text" placeholder="Take a note.." />
+      <input type="text"  formControlName="description"  placeholder="Take a note.." />
     </div>
-    <div class="noteAction" fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutGap="32px">
+    <div class="noteAction" fxLayout="row" fxLayoutAlign.gt-sm="space-between center" fxLayoutAlign.lt-sm="none center">
+      <div fxLayout="row" fxLayoutGap.gt-sm="20%" fxLayoutGap.lt-sm="0%">
         <div class="container">
-          <button class="my-button"><mat-icon>notification_add</mat-icon>
-          </button>
+          <button matTooltip="Reminder" [class.clicked]="isReminder" class="my-button" (click)="isReminder=!isReminder" ><mat-icon>notification_add</mat-icon>
+           </button>
         </div>
         <div class="container">
-          <button class="my-button"><mat-icon>person_add_alt</mat-icon></button>
+          <button matTooltip="Collaborator" class="my-button"><mat-icon>person_add_alt</mat-icon></button>
         </div>
         <div class="container">
-          <button class="my-button"><mat-icon>palette</mat-icon></button>
+          <button matTooltip="Color" class="my-button"  ><mat-icon>color_lens</mat-icon></button>
         </div>
         <div class="container">
-          <button class="my-button"><mat-icon>image</mat-icon></button>
+          <button matTooltip="Add Image" class="my-button"  ><mat-icon>image</mat-icon></button>
         </div>
         <div class="container">
-          <button class="my-button"><mat-icon>archive</mat-icon></button>
+          <button matTooltip="Archive" class="my-button" [class.clicked]="isArchive" (click)="isArchive=!isArchive" ><mat-icon>archive</mat-icon></button>
         </div>
         <div class="container">
-          <button class="my-button"><mat-icon>more_vert</mat-icon></button>
+          <button matTooltip="More" [class.clicked]="isMoreOpen"  class="my-button" (click)="isMoreOpen=!isMoreOpen" ><mat-icon>more_vert</mat-icon></button>
         </div>
       </div>
-      <div>
+      <div fxLayout="row" >
+        <button mat-button (click)="AddNote()">Create</button>
         <button mat-button (click)="isOpen = !isOpen">Close</button>
       </div>
     </div>
   </div>
+ 
+</form>
+<div class="moreOptions positionBelowMore"  *ngIf="isMoreOpen" fxLayout="column">
+  <button mat-button>Add label</button>
+  <button mat-button>Add drawing</button>
+</div>
+<div class="dateTimePicker positionBelowReminder" *ngIf="isReminder" fxLayout="column">
+  <button mat-button matTooltip="Select Date-time" > <mat-icon>schedule</mat-icon> Pick date & time</button>
+  
 </div>

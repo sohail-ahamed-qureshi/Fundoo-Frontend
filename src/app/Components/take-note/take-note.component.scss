@@ -1,32 +1,28 @@
-
-
-.takeNoteSection{
+.takeNoteSection {
   width: 400px;
-  margin:  auto;
+  margin: auto;
   border-radius: 8px;
   cursor: text;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-input, p{
+input,
+p {
   width: 90%;
   height: 30px;
   border: none;
   padding: 2%;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
-.notesTitle, .notesBody{
-padding: 2%;
+.notesTitle,
+.notesBody {
+  padding: 2%;
 }
 
-.noteAction{
+.noteAction {
   padding-top: 10px;
 }
-
-// .container {
-//   margin: 15px;
-// }
 
 .my-button {
   width: 30px;
@@ -38,13 +34,48 @@ padding: 2%;
   background-color: transparent;
 }
 
-.my-button:hover{
+.moreOptions, .dateTimePicker {
+  width: auto;
+  height: fit-content;
+  background-color: #fafafa;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+  z-index: 99;
+}
+
+.positionBelowMore{
+  position: fixed;
+  top: 34%;
+  left: 54%;
+}
+
+.positionBelowReminder{
+  position: fixed;
+  top: 34%;
+  left: 34%;
+}
+
+@media only screen and (max-width: 599px) {
+  .my-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding-top: 4px;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.my-button:hover {
   background-color: rgba(153, 147, 147, 0.5);
   color: rgb(255, 255, 255);
 }
 
-mat-icon{
-  font-size: 18px;
+.clicked{
+  background-color: rgba(31, 28, 28, 0.5);
 }
 
-
+mat-icon {
+  font-size: 18px;
+}

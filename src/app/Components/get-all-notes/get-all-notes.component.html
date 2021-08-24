@@ -1,9 +1,9 @@
-<div class="mainSection"  fxFlex *ngFor="let note of notes; let i = index">
-  <mat-card class="card" >
-    <mat-card-header fxLayout="row" fxLayoutAlign="space-between">
-      <mat-card-title>{{ note.title }}</mat-card-title>
-      <button class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
-    </mat-card-header>
+<div class="mainSection"  fxLayoutAlign="space-between" *ngFor="let note of notes; let i = index">
+  <mat-card class="card">
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center" >
+      <h2> {{ note.title }}</h2>
+      <button matTooltip="Pin" class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
+    </div>
     <mat-card-content>
       <p>
         {{ note.description }}
@@ -13,22 +13,22 @@
     <mat-card-actions>
       <div fxLayout="row" fxLayoutAlign="space-between">
          <div class="container">
-             <button class="my-button"> <mat-icon>notification_add</mat-icon></button>
+             <button matTooltip="Reminder" class="my-button"> <mat-icon>notification_add</mat-icon></button>
            </div>
            <div class="container">
-             <button class="my-button"> <mat-icon>person_add_alt</mat-icon></button>
+             <button matTooltip="Collaborator" class="my-button"> <mat-icon>person_add_alt</mat-icon></button>
            </div>
            <div class="container">
-             <button class="my-button"><mat-icon>palette</mat-icon></button>
+             <button matTooltip="Color" class="my-button"><mat-icon>color_lens</mat-icon></button>
            </div>
            <div class="container">
-             <button class="my-button"> <mat-icon>image</mat-icon></button>
+             <button matTooltip="Add image" class="my-button"> <mat-icon>image</mat-icon></button>
            </div>
            <div class="container">
-             <button class="my-button"><mat-icon>archive</mat-icon></button>
+             <button matTooltip="Archive" class="my-button"><mat-icon>archive</mat-icon></button>
            </div>
            <div class="container">
-             <button class="my-button"> <mat-icon>more_vert</mat-icon></button>
+             <button matTooltip="More" class="my-button"> <mat-icon>more_vert</mat-icon></button>
            </div>
        </div>
     </mat-card-actions>
