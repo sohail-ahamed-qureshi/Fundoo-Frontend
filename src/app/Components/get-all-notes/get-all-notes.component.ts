@@ -12,7 +12,7 @@ export class GetAllNotesComponent implements OnInit {
   output: any;
   ngOnInit(): void {
     this.GetAllNotes();
-  } 
+  }
   GetAllNotes() {
     this.note.GetAllNotes('Notes').subscribe((response) => {
       console.log(response);

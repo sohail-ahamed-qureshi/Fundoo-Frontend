@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { NoteService } from 'src/app/services/note-service/note.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-arhive-notes',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArhiveNotesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private noteSerive: NoteService) { }
 
+  
   ngOnInit(): void {
+    
   }
+
+
 
 }

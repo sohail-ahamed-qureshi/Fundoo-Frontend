@@ -32,6 +32,9 @@ import { ReminderNotesComponent } from './Components/reminder-notes/reminder-not
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './Components/arhive-notes/arhive-notes.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { GetAllArchiveComponent } from './Components/get-all-archive/get-all-archive.component';
+import { GetAllTrashComponent } from './Components/get-all-trash/get-all-trash.component';
+import { GetAllReminderComponent } from './Components/get-all-reminder/get-all-reminder.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ReminderNotesComponent,
     TrashNotesComponent,
     ArhiveNotesComponent,
+    GetAllArchiveComponent,
+    GetAllTrashComponent,
+    GetAllReminderComponent,
 
   ],
   imports: [
