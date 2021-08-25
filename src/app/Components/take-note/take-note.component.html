@@ -13,7 +13,10 @@
 <form [formGroup]="takeNote" *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
     <input *ngIf="isOpen" formControlName="title"  placeholder="Title" />
-    <mat-icon [class.clicked]="isPin" (click)="isPin=!isPin" >push_pin</mat-icon>
+    <div class="container" fxlayoutAlign="center center" >
+      <mat-icon class="my-button pinBtn" [class.clicked]="isPin" (click)="isPin=!isPin" >push_pin</mat-icon>
+    </div>
+    
   </div>
   <div class="notesBody" >
     <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -22,15 +25,16 @@
     <div class="noteAction" fxLayout="row" fxLayoutAlign.gt-sm="space-between center" fxLayoutAlign.lt-sm="none center">
       <div fxLayout="row" fxLayoutGap.gt-sm="20%" fxLayoutGap.lt-sm="0%">
         <div class="container">
-          <button matTooltip="Reminder" [class.clicked]="isReminder" class="my-button" (click)="isReminder=!isReminder" ><mat-icon>notification_add</mat-icon>
+          <button matTooltip="Reminder"  [matMenuTriggerFor]="reminder" [class.clicked]="isReminder"  class="my-button" (click)="isReminder=!isReminder" ><mat-icon>notification_add</mat-icon>
            </button>
         </div>
         <div class="container">
           <button matTooltip="Collaborator" class="my-button"><mat-icon>person_add_alt</mat-icon></button>
         </div>
         <div class="container">
-          <button matTooltip="Color" class="my-button"  ><mat-icon>color_lens</mat-icon></button>
+          <button matTooltip="Color"  [matMenuTriggerFor]="aboveMenu"  class="my-button"  ><mat-icon>color_lens</mat-icon></button>
         </div>
+       
         <div class="container">
           <button matTooltip="Add Image" class="my-button"  ><mat-icon>image</mat-icon></button>
         </div>
@@ -38,7 +42,7 @@
           <button matTooltip="Archive" class="my-button" [class.clicked]="isArchive" (click)="isArchive=!isArchive" ><mat-icon>archive</mat-icon></button>
         </div>
         <div class="container">
-          <button matTooltip="More" [class.clicked]="isMoreOpen"  class="my-button" (click)="isMoreOpen=!isMoreOpen" ><mat-icon>more_vert</mat-icon></button>
+          <button matTooltip="More" [class.clicked]="isMoreOpen" [matMenuTriggerFor]="more"  class="my-button" (click)="isMoreOpen=!isMoreOpen" ><mat-icon>more_vert</mat-icon></button>
         </div>
       </div>
       <div fxLayout="row" >
@@ -48,11 +52,54 @@
   </div>
  
 </form>
-<div class="moreOptions positionBelowMore"  *ngIf="isMoreOpen" fxLayout="column">
-  <button mat-button>Add label</button>
-  <button mat-button>Add drawing</button>
-</div>
-<div class="dateTimePicker positionBelowReminder" *ngIf="isReminder" fxLayout="column">
-  <button mat-button matTooltip="Select Date-time" > <mat-icon>schedule</mat-icon> Pick date & time</button>
-  
-</div>
+
+<!-- <div>
+  <button mat-button (click)="trigger()">send message</button>
+</div> -->
+
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+      <button matTooltip="Default"  class="my-button bg-white" mat-menu-item></button>
+    </div>
+    <div>
+      <button matTooltip="Red" class="my-button bg-red" mat-menu-item></button>
+    </div>
+    <div>
+      <button matTooltip="Green" class="my-button bg-green" mat-menu-item></button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+      <button matTooltip="Ornage" class="my-button bg-orange" mat-menu-item></button>
+    </div>
+    <div>
+      <button matTooltip="Pink" class="my-button bg-pink" mat-menu-item></button>
+    </div>
+    <div>
+      <button matTooltip="Gray" class="my-button bg-gray" mat-menu-item></button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+      <button matTooltip="purple" class="my-button bg-purple" mat-menu-item></button>
+    </div>
+    <div>
+      <button matTooltip="Blue" class="my-button bg-blue " mat-menu-item></button>
+    </div>
+    <div>
+      <button matTooltip="Yellow" class="my-button bg-yellow" mat-menu-item></button>
+    </div>
+  </div>
+</mat-menu>
+
+
+
+<mat-menu #reminder="matMenu">
+  <button  mat-menu-item matTooltip="Select Date-time" > <mat-icon>schedule</mat-icon> Pick date & time</button>
+</mat-menu>
+
+<mat-menu #more="matMenu">
+  <button mat-menu-item>Add label</button>
+  <button mat-menu-item>Add drawing</button>
+</mat-menu>

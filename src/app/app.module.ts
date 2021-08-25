@@ -35,7 +35,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { GetAllArchiveComponent } from './Components/get-all-archive/get-all-archive.component';
 import { GetAllTrashComponent } from './Components/get-all-trash/get-all-trash.component';
 import { GetAllReminderComponent } from './Components/get-all-reminder/get-all-reminder.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +77,9 @@ import { GetAllReminderComponent } from './Components/get-all-reminder/get-all-r
     MatListModule,
     MatExpansionModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

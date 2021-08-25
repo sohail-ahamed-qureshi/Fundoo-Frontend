@@ -22,4 +22,8 @@ export class NoteService {
   GetAllArchiveNotes(url:any){
     return this.http.GetAllNotes( url);
    }
+
+   GetAllTrashNotes(url:any){
+    return this.http.GetAllTrashNotes( url);
+   }
 }

@@ -15,6 +15,15 @@ p {
   background-color: #fafafa;
 }
 
+input{
+  outline: none;
+}
+
+.pinBtn {
+  padding-top: 7px;
+  padding-left: 5px;
+}
+
 .notesTitle,
 .notesBody {
   padding: 2%;
@@ -43,17 +52,45 @@ p {
   z-index: 99;
 }
 
-.positionBelowMore{
-  position: fixed;
-  top: 34%;
-  left: 54%;
+.bg-white{
+  background-color: #ffffff;
 }
 
-.positionBelowReminder{
-  position: fixed;
-  top: 34%;
-  left: 34%;
+.bg-red{
+  background-color: #e75f5f;
 }
+
+.bg-green{
+  background-color: #65e665;
+}
+
+.bg-orange{
+  background-color: #e28011;
+}
+
+.bg-gray{
+  background-color: #c3c0c086;
+}
+
+.bg-pink{
+  background-color: #ee6ce3;
+}
+
+.bg-purple{
+  background-color: #be7aeb;
+}
+
+.bg-blue{
+  background-color: #5eadee;
+}
+
+.bg-yellow{
+  background-color: #e7da65;
+}
+
+
+
+
 
 @media only screen and (max-width: 599px) {
   .my-button {
@@ -76,6 +113,7 @@ p {
   background-color: rgba(31, 28, 28, 0.5);
 }
 
-mat-icon {
+mat-icon, .material-icons-outlined {
   font-size: 18px;
+  
 }

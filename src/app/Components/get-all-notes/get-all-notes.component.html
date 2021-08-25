@@ -1,4 +1,4 @@
-<div class="mainSection"  fxLayoutAlign="space-between" *ngFor="let note of notes; let i = index">
+<div class="mainSection" (click)="openDialog()" fxLayoutAlign="space-between"   *ngFor="let note of notes; let i = index">
   <mat-card class="card">
     <div class="header" fxLayout="row" fxLayoutAlign="space-between center" >
       <h2> {{ note.title }}</h2>
@@ -33,4 +33,12 @@
        </div>
     </mat-card-actions>
   </mat-card>
+</div>
+
+<div #dialog>
+  <h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
 </div>
