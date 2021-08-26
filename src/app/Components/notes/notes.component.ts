@@ -10,21 +10,21 @@ export class NotesComponent implements OnInit {
   constructor(private note: NoteService) {}
   output: any;
   notes = [];
-  message:any;
+  message: any;
   ngOnInit(): void {
     this.GetAllNotes();
   }
 
-  TriggerGetAllNotes($event:any){
+  Refresh(event: any) {
+    this.message = event;
     this.GetAllNotes();
-    this.message=$event;
   }
 
   GetAllNotes() {
     this.note.GetAllNotes('Notes').subscribe((response) => {
       this.output = response;
       this.notes = this.output.data;
-      console.log(this.notes);     
+      console.log(this.notes);
     });
   }
 }

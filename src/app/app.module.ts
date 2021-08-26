@@ -1,3 +1,4 @@
+import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +24,6 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NotesComponent } from './Components/notes/notes.component';
@@ -32,9 +32,6 @@ import { ReminderNotesComponent } from './Components/reminder-notes/reminder-not
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './Components/arhive-notes/arhive-notes.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { GetAllArchiveComponent } from './Components/get-all-archive/get-all-archive.component';
-import { GetAllTrashComponent } from './Components/get-all-trash/get-all-trash.component';
-import { GetAllReminderComponent } from './Components/get-all-reminder/get-all-reminder.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { ActionButtonsComponent } from './Components/action-buttons/action-buttons.component';
@@ -50,17 +47,14 @@ import { DialogContentComponent } from './Components/dialog-content/dialog-conte
     NavbarComponent,
     SidebarComponent,
     DashboardComponent,
-    GetAllNotesComponent,
     TakeNoteComponent,
     NotesComponent,
     ReminderNotesComponent,
     TrashNotesComponent,
     ArhiveNotesComponent,
-    GetAllArchiveComponent,
-    GetAllTrashComponent,
-    GetAllReminderComponent,
     ActionButtonsComponent,
     DialogContentComponent,
+    GetAllNotesComponent
 
   ],
   imports: [

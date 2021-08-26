@@ -61,21 +61,13 @@ export class HttpserviceService {
     return this.http.post(this.baseUrl+url, data, httpOptions);
   }
 
-  GetAllArchiveNotes(url:any){
+  UpdateNote(url:any, data: any){
     let token = localStorage.getItem('token');
     var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
     let httpOptions = {
       headers : headerObject
     }
-     return this.http.get(this.baseUrl+url,httpOptions);
+    return this.http.put(this.baseUrl+url, data, httpOptions);
   }
 
-  GetAllTrashNotes(url:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
-     return this.http.get(this.baseUrl+url,httpOptions);
-  }
 }
