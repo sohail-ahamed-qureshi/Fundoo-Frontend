@@ -37,6 +37,8 @@ import { GetAllTrashComponent } from './Components/get-all-trash/get-all-trash.c
 import { GetAllReminderComponent } from './Components/get-all-reminder/get-all-reminder.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import { ActionButtonsComponent } from './Components/action-buttons/action-buttons.component';
+import { DialogContentComponent } from './Components/dialog-content/dialog-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,8 @@ import {MatMenuModule} from '@angular/material/menu';
     GetAllArchiveComponent,
     GetAllTrashComponent,
     GetAllReminderComponent,
+    ActionButtonsComponent,
+    DialogContentComponent,
 
   ],
   imports: [

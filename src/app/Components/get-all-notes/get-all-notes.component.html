@@ -1,44 +1,23 @@
-<div class="mainSection" (click)="openDialog()" fxLayoutAlign="space-between"   *ngFor="let note of notes; let i = index">
-  <mat-card class="card">
-    <div class="header" fxLayout="row" fxLayoutAlign="space-between center" >
-      <h2> {{ note.title }}</h2>
-      <button matTooltip="Pin" class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
+<div class="mainSection"  fxLayoutAlign="space-between"   *ngFor="let note of notes; let i = index">
+  <mat-card class="card"  >
+   <div fxLayout="row" >
+    <div  (click)="openDialog(note)" fxFlex="88%">
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2> {{ note.title }}</h2>
+      </div>
+      <mat-card-content>
+        <p>
+          {{ note.description }}
+        </p>
+      </mat-card-content>
     </div>
-    <mat-card-content>
-      <p>
-        {{ note.description }}
-      </p>
-    </mat-card-content>
+      <button matTooltip="Pin" class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
+   </div>
     <!-- labels here -->
     <mat-card-actions>
-      <div fxLayout="row" fxLayoutAlign="space-between">
-         <div class="container">
-             <button matTooltip="Reminder" class="my-button"> <mat-icon>notification_add</mat-icon></button>
-           </div>
-           <div class="container">
-             <button matTooltip="Collaborator" class="my-button"> <mat-icon>person_add_alt</mat-icon></button>
-           </div>
-           <div class="container">
-             <button matTooltip="Color" class="my-button"><mat-icon>color_lens</mat-icon></button>
-           </div>
-           <div class="container">
-             <button matTooltip="Add image" class="my-button"> <mat-icon>image</mat-icon></button>
-           </div>
-           <div class="container">
-             <button matTooltip="Archive" class="my-button"><mat-icon>archive</mat-icon></button>
-           </div>
-           <div class="container">
-             <button matTooltip="More" class="my-button"> <mat-icon>more_vert</mat-icon></button>
-           </div>
-       </div>
+    <app-action-buttons></app-action-buttons>
+    
     </mat-card-actions>
   </mat-card>
 </div>
 
-<div #dialog>
-  <h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div>
-</div>

@@ -1,0 +1,13 @@
+<form >
+<div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
+  <input mat-dialog-title   placeholder="Title" value="{{data.title}}" />
+  <div class="container" fxlayoutAlign="center center">
+    <mat-icon class="my-button pinBtn" [class.clicked]="true">push_pin</mat-icon>
+  </div>
+</div>
+  <input mat-dialog-title  placeholder="description" value="{{data.description}}" />
+</form>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center"  >
+  <app-action-buttons   ></app-action-buttons>
+  <button mat-button mat-dialog-close >Close</button>
+</mat-dialog-actions>

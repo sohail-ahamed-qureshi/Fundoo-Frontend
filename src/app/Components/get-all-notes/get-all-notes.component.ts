@@ -1,6 +1,6 @@
+import { DialogContentComponent } from './../dialog-content/dialog-content.component';
 import { Component, Input, OnInit } from '@angular/core';
-import { NoteService } from 'src/app/services/note-service/note.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-get-all-notes',
@@ -8,15 +8,19 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./get-all-notes.component.scss'],
 })
 export class GetAllNotesComponent implements OnInit {
-  
-  constructor(private note: NoteService, public dialog: MatDialog) {}
-  @Input() notes:any;
+  constructor( public dialog: MatDialog) {}
+  @Input() notes: any;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  openDialog() {
-    this.dialog.open(#dialog);
+  openDialog(note:any) { 
+   let dialogRef = this.dialog.open(DialogContentComponent, {
+      width: '500px',
+       data:{
+         title:note.title,
+         description:note.description
+       }
+    });
+    dialogRef.afterClosed().subscribe()
   }
- 
 }
