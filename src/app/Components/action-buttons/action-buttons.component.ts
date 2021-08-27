@@ -1,6 +1,9 @@
+import { ArhiveNotesComponent } from './../arhive-notes/arhive-notes.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataServiceService } from './../../services/data-service.service';
 import { NoteService } from './../../services/note-service/note.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-action-buttons',
@@ -9,19 +12,34 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ActionButtonsComponent implements OnInit {
   @Input() card: any;
+  durationInSeconds = 3;
+  isArchiveNotes=false;
   constructor(private noteService: NoteService,
-    private dataService: DataServiceService) { }
+    private dataService: DataServiceService,
+    private snackBar: MatSnackBar,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let route:any =this.activatedRoute.snapshot.component
+    if(route == ArhiveNotesComponent ){
+      this.isArchiveNotes=true;
+    }
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 
   isArchive() {
     console.log(this.card.noteId);
     this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
       this.dataService.sendMessage(response);
+      this.openSnackBar(response.message)
     },
       error => {
-        console.log(error.message);
+        this.openSnackBar(error.message)
       }
     )
   }

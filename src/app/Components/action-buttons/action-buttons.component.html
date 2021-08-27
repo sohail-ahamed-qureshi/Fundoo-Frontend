@@ -12,7 +12,10 @@
         <button matTooltip="Add image" class="my-button"> <mat-icon>image</mat-icon></button>
       </div>
       <div class="container">
-        <button matTooltip="Archive" (click)="isArchive()"  class="my-button"><mat-icon>archive</mat-icon></button>
+        <button  (click)="isArchive()"  class="my-button">
+          <mat-icon matTooltip="Archive" *ngIf="!isArchiveNotes" >archive</mat-icon>
+          <mat-icon matTooltip="UnArchive" *ngIf="isArchiveNotes" >unarchive</mat-icon>
+        </button>
       </div>
       <div class="container">
         <button matTooltip="More" class="my-button"> <mat-icon>more_vert</mat-icon></button>
