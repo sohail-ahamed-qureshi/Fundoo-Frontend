@@ -1,23 +1,48 @@
-<div fxLayout="row" fxLayoutAlign="space-between">
-    <div class="container">
-        <button matTooltip="Reminder" class="my-button"> <mat-icon>notification_add</mat-icon></button>
-      </div>
-      <div class="container">
-        <button matTooltip="Collaborator" class="my-button"> <mat-icon>person_add_alt</mat-icon></button>
-      </div>
-      <div class="container">
-        <button matTooltip="Color" class="my-button"><mat-icon>color_lens</mat-icon></button>
-      </div>
-      <div class="container">
-        <button matTooltip="Add image" class="my-button"> <mat-icon>image</mat-icon></button>
-      </div>
-      <div class="container">
-        <button  (click)="isArchive()"  class="my-button">
-          <mat-icon matTooltip="Archive" *ngIf="!isArchiveNotes" >archive</mat-icon>
-          <mat-icon matTooltip="UnArchive" *ngIf="isArchiveNotes" >unarchive</mat-icon>
-        </button>
-      </div>
-      <div class="container">
-        <button matTooltip="More" class="my-button"> <mat-icon>more_vert</mat-icon></button>
-      </div>
+<div *ngIf="!isDeleteNotes" fxLayout="row" fxLayoutAlign="space-between">
+  <div class="container">
+    <button class="my-button">
+      <mat-icon matTooltip="Reminder" >notification_add</mat-icon>
+    </button>
   </div>
+  <div class="container">
+    <button matTooltip="Collaborator" class="my-button">
+      <mat-icon >person_add_alt</mat-icon>
+
+    </button>
+  </div>
+  <div  class="container">
+    <button matTooltip="Color" class="my-button">
+      <mat-icon>color_lens</mat-icon>
+    </button>
+  </div>
+  <div  class="container">
+    <button matTooltip="Add image" class="my-button">
+      <mat-icon>image</mat-icon>
+    </button>
+  </div>
+  <div  class="container">
+    <button (click)="isArchive()" class="my-button">
+      <mat-icon matTooltip="Archive" *ngIf="!isArchiveNotes">archive</mat-icon>
+      <mat-icon matTooltip="UnArchive" *ngIf="isArchiveNotes">unarchive</mat-icon>
+    </button>
+  </div>
+  <div  class="container">
+    <button matTooltip="More" class="my-button" [matMenuTriggerFor]="more">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div *ngIf="isDeleteNotes" fxLayout="row" fxLayoutAlign="start center">
+  <div   >
+    <mat-icon class="my-button space" (click)="trashNote()" matTooltip="Restore" *ngIf="isDeleteNotes">restore_from_trash</mat-icon>
+  </div>
+  <div  >
+    <mat-icon class="my-button space" (click)="DeleteNote()" matTooltip="Delete forever" *ngIf="isDeleteNotes">delete_forever</mat-icon>
+  </div>
+</div>
+
+<mat-menu #more="matMenu">
+  <button mat-menu-item (click)="trashNote()">Delete note</button>
+  <button mat-menu-item>Add label</button>
+</mat-menu>

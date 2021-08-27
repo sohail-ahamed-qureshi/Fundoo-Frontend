@@ -1,3 +1,4 @@
+import { TrashNotesComponent } from './../trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './../arhive-notes/arhive-notes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataServiceService } from './../../services/data-service.service';
@@ -14,6 +15,7 @@ export class ActionButtonsComponent implements OnInit {
   @Input() card: any;
   durationInSeconds = 3;
   isArchiveNotes=false;
+  isDeleteNotes=false;
   constructor(private noteService: NoteService,
     private dataService: DataServiceService,
     private snackBar: MatSnackBar,
@@ -23,6 +25,9 @@ export class ActionButtonsComponent implements OnInit {
     let route:any =this.activatedRoute.snapshot.component
     if(route == ArhiveNotesComponent ){
       this.isArchiveNotes=true;
+    }
+    if(route== TrashNotesComponent){
+      this.isDeleteNotes=true;
     }
   }
 
@@ -35,6 +40,30 @@ export class ActionButtonsComponent implements OnInit {
   isArchive() {
     console.log(this.card.noteId);
     this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
+      this.dataService.sendMessage(response);
+      this.openSnackBar(response.message)
+    },
+      error => {
+        this.openSnackBar(error.message)
+      }
+    )
+  }
+
+  trashNote(){
+    console.log(this.card.noteId);
+    this.noteService.trashNote('Notes/' + this.card.noteId + '/trash').subscribe((response: any) => {
+      this.dataService.sendMessage(response);
+      this.openSnackBar(response.message)
+    },
+      error => {
+        this.openSnackBar(error.message)
+      }
+    )
+  }
+
+  DeleteNote(){
+    console.log(this.card.noteId);
+    this.noteService.trashNote('Notes/' + this.card.noteId).subscribe((response: any) => {
       this.dataService.sendMessage(response);
       this.openSnackBar(response.message)
     },

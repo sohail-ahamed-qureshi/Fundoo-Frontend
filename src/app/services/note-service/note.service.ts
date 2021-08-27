@@ -25,4 +25,8 @@ export class NoteService {
   Archive(url:any){
    return this.http.Archive(url);
   }
+
+  trashNote(url:any){
+    return this.http.trashNote(url);
+  }
 }

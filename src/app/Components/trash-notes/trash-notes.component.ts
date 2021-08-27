@@ -1,3 +1,4 @@
+import { DataServiceService } from './../../services/data-service.service';
 import { NoteService } from 'src/app/services/note-service/note.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,11 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class TrashNotesComponent implements OnInit {
   output: any;
   notes = [];
-  constructor(private note: NoteService) { }
+  constructor(private note: NoteService,
+    private dataservice: DataServiceService) { }
 
   ngOnInit(): void {
     this.GetAllNotes();
-  }
+    this.dataservice.recievedMessage.subscribe(response=>{
+      this.GetAllNotes();
+    })
+}
 
   GetAllNotes() {
     this.note.GetAllNotes('Notes/trash').subscribe((response) => {
