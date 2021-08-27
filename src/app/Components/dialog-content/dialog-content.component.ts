@@ -14,6 +14,7 @@ export class DialogContentComponent implements OnInit {
   cardForm!: FormGroup;
   output: any;
   durationInSeconds = 3;
+  dateTime!: Date;
   @Output() messageEvent = new EventEmitter<any>();
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
@@ -26,7 +27,9 @@ export class DialogContentComponent implements OnInit {
     this.cardForm = this.formBuilder.group({
       title: this.data.title,
       description: this.data.description
-    })
+    }),
+    this.dateTime = this.data.modifiedDate;
+    
   }
 
   openSnackBar(message: string) {
