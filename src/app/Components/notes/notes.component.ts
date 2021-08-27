@@ -1,3 +1,4 @@
+import { DataServiceService } from './../../services/data-service.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note-service/note.service';
 
@@ -7,12 +8,17 @@ import { NoteService } from 'src/app/services/note-service/note.service';
   styleUrls: ['./notes.component.scss'],
 })
 export class NotesComponent implements OnInit {
-  constructor(private note: NoteService) {}
+  constructor(private note: NoteService,
+    private dataservice: DataServiceService) {}
   output: any;
   notes = [];
   message: any;
   ngOnInit(): void {
     this.GetAllNotes();
+    this.dataservice.recievedMessage.subscribe(response=>{
+      console.log(response);
+      this.GetAllNotes();
+    })
   }
 
   Refresh(event: any) {

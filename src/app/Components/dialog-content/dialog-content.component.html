@@ -5,7 +5,14 @@
     <mat-icon class="my-button pinBtn" [class.clicked]="true">push_pin</mat-icon>
   </div>
 </div>
+<div>
   <input mat-dialog-title formControlName="description" placeholder="description" value="{{data.description}}" />
+</div>
+<div fxLayoutAlign="end center">
+  <p>
+    Edited: {{data.modifiedDate}}
+  </p>
+</div>
 </form>
 <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center"  >
   <app-action-buttons   ></app-action-buttons>
