@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DataServiceService } from './../../services/data-service.service';
+import { NoteService } from './../../services/note-service/note.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-action-buttons',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./action-buttons.component.scss']
 })
 export class ActionButtonsComponent implements OnInit {
-
-  constructor() { }
+  @Input() card: any;
+  constructor(private noteService: NoteService,
+    private dataService: DataServiceService) { }
 
   ngOnInit(): void {
+  }
+
+  isArchive() {
+    console.log(this.card.noteId);
+    this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
+      this.dataService.sendMessage(response);
+    },
+      error => {
+        console.log(error.message);
+      }
+    )
   }
 
 }

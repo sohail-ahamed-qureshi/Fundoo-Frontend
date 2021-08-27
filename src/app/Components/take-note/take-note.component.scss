@@ -43,6 +43,25 @@ input{
   background-color: transparent;
 }
 
+.pallete{
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  padding-top: 4px;
+  border: none;
+
+}
+
+
+
+.pallete:hover{
+  border: 1px solid black;
+  color: none;
+}
+
+
+
 .moreOptions, .dateTimePicker {
   width: auto;
   height: fit-content;
@@ -52,12 +71,18 @@ input{
   z-index: 99;
 }
 
+.space{
+  margin-bottom:5px;
+}
+
 .bg-white{
   background-color: #ffffff;
+  z-index: 1;
 }
 
 .bg-red{
   background-color: #e75f5f;
+  z-index: 1;
 }
 
 .bg-green{

@@ -1,7 +1,8 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteService } from 'src/app/services/note-service/note.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnChanges, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-take-note',
   templateUrl: './take-note.component.html',
@@ -14,15 +15,19 @@ export class TakeNoteComponent implements OnInit {
   isReminder = false;
   isArchive = false;
   isPin = false;
-  color: string = 'white';
+  color:any;
+  isRed=false;
   isClose: boolean = true;
   isOpen: boolean = false;
-  @Output() messageEvent= new EventEmitter();
+  durationInSeconds = 3;
+  output: any;
+  @Output() messageEvent = new EventEmitter();
   constructor(
     private formBuilder: FormBuilder,
     private noteService: NoteService,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.takeNote = this.formBuilder.group({
@@ -30,6 +35,14 @@ export class TakeNoteComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK', {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
+
   AddNote() {
     this.isCreated = true;
     if (this.takeNote.invalid) {
@@ -53,20 +66,14 @@ export class TakeNoteComponent implements OnInit {
     this.takeNote.controls['description'].setValue('');
     this.isOpen = !this.isOpen;
     this.noteService.CreateNote('Notes', reqPayload).subscribe(
-      (response) => {
-        console.log(response);
-      
+      (response: any) => {
+        this.output = response;
+        this.openSnackBar(this.output.message);
+        this.messageEvent.emit(this.output);
       },
       (err) => {
-        console.log(err);
+        this.openSnackBar(err.message);
       }
     );
-    //calling get all notes method
-    this.messageEvent.emit();
   }
-
-  // trigger(){
-  //   console.log("clicked");
-  //   this.messageEvent.emit('running event');
-  // }
 }

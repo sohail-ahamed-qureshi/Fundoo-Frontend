@@ -21,4 +21,8 @@ export class NoteService {
   UpdateNote(url: any, data:any){
     return this.http.UpdateNote(url,data);
   }
+
+  Archive(url:any){
+   return this.http.Archive(url);
+  }
 }

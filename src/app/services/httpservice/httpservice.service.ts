@@ -70,4 +70,13 @@ export class HttpserviceService {
     return this.http.put(this.baseUrl+url, data, httpOptions);
   }
 
+  Archive(url:any){
+    let token = localStorage.getItem('token');
+    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
+    let httpOptions = {
+      headers : headerObject
+    }
+    return this.http.put(this.baseUrl+url,null ,httpOptions);
+  }
+
 }

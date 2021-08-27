@@ -30,6 +30,7 @@ export class NotesComponent implements OnInit {
     this.note.GetAllNotes('Notes').subscribe((response) => {
       this.output = response;
       this.notes = this.output.data;
+      this.notes.reverse();
       console.log(this.notes);
     });
   }

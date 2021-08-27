@@ -17,7 +17,7 @@ export class ArhiveNotesComponent implements OnInit {
   }
 
   GetAllArchivedNotes() {
-    this.noteSerive.GetAllNotes('Notes/trash').subscribe((response) => {
+    this.noteSerive.GetAllNotes('Notes/Archive').subscribe((response) => {
       this.output = response;
       this.notes = this.output.data;
       console.log(this.notes);     
