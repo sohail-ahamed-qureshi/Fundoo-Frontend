@@ -4,7 +4,7 @@
 </div>
 
 
-<form [formGroup]="takeNote" *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
+<form [formGroup]="takeNote"  [class.bg-red]="isRed"  *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
     <input *ngIf="isOpen" formControlName="title" placeholder="Title" />
     <div class="container" fxlayoutAlign="center center">
@@ -64,7 +64,7 @@
 
     <button matTooltip="Default" class="pallete bg-white" mat-menu-item></button>
 
-    <button matTooltip="Red" value="#e75f5f" (click)="isRed" class="pallete bg-red" mat-menu-item></button>
+    <button matTooltip="Red" value="#e75f5f" (click)="ColorRed()" class="pallete bg-red" mat-menu-item></button>
 
     <button matTooltip="Green" class="pallete bg-green" mat-menu-item></button>
   </div>

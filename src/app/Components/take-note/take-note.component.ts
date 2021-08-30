@@ -3,6 +3,7 @@ import { NoteService } from 'src/app/services/note-service/note.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnChanges, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 @Component({
   selector: 'app-take-note',
   templateUrl: './take-note.component.html',
@@ -15,7 +16,10 @@ export class TakeNoteComponent implements OnInit {
   isReminder = false;
   isArchive = false;
   isPin = false;
-  color:any;
+
+  white="#ffffff";
+  red="#e75f5f";
+  color:any=this.white;
   isRed=false;
   isClose: boolean = true;
   isOpen: boolean = false;
@@ -40,6 +44,12 @@ export class TakeNoteComponent implements OnInit {
     this._snackBar.open(message, 'OK', {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  ColorRed(){
+    this.isRed=true;
+    this.color=this.red;
+    console.log(this.color);
   }
 
 
@@ -68,7 +78,7 @@ export class TakeNoteComponent implements OnInit {
     this.noteService.CreateNote('Notes', reqPayload).subscribe(
       (response: any) => {
         this.output = response;
-        this.openSnackBar(this.output.message);
+        this.openSnackBar("Note has been Created");
         this.messageEvent.emit(this.output);
       },
       (err) => {

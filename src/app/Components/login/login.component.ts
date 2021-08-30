@@ -51,19 +51,14 @@ export class LoginComponent implements OnInit {
     }
     //Call:user service login method
     this.userService.loginUser(requestPayload)?.subscribe(response => {
-      console.log(response);
       this.output=response;
       localStorage.setItem('token', this.output.data);
       this.openSnackBar(JSON.stringify(this.output.message)
       );
       this.router.navigateByUrl("/home");
     } , (err:any)=>{
-      console.log(err);
-        this.output = err;
-        this.openSnackBar(JSON.stringify(this.output.error
-        ));
+        this.openSnackBar(err);
       }
-     
     );
   }
 }

@@ -23,8 +23,7 @@ export class TrashNotesComponent implements OnInit {
   GetAllNotes() {
     this.note.GetAllNotes('Notes/trash').subscribe((response) => {
       this.output = response;
-      this.notes = this.output.data;
-      console.log(this.notes);     
+      this.notes = this.output.data;     
     });
   }
 

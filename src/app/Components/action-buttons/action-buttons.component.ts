@@ -3,7 +3,7 @@ import { ArhiveNotesComponent } from './../arhive-notes/arhive-notes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataServiceService } from './../../services/data-service.service';
 import { NoteService } from './../../services/note-service/note.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,6 +16,10 @@ export class ActionButtonsComponent implements OnInit {
   durationInSeconds = 3;
   isArchiveNotes=false;
   isDeleteNotes=false;
+  red:any='#e75f5f';
+
+
+  bgRed =false;
   constructor(private noteService: NoteService,
     private dataService: DataServiceService,
     private snackBar: MatSnackBar,
@@ -71,6 +75,10 @@ export class ActionButtonsComponent implements OnInit {
         this.openSnackBar(error.message)
       }
     )
+  }
+
+  isRed(){
+     this.dataService.sendMessage('isRed');
   }
 
 }

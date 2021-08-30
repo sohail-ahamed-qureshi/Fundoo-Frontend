@@ -1,5 +1,5 @@
 <div class="mainSection"  fxLayoutAlign="space-between"   *ngFor="let note of notes; let i = index">
-  <mat-card class="card"  >
+  <mat-card class="card" fxFlex.xs=100 [ngClass]="bgColor(note)" >
    <div fxLayout="row" >
     <div  (click)="openDialog(note)" fxFlex="88%">
       <div class="header" fxLayout="row" fxLayoutAlign="space-between center" >
@@ -14,8 +14,9 @@
       <button matTooltip="Pin" class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
    </div>
     <!-- labels here -->
+
     <mat-card-actions>
-    <app-action-buttons [card]="note" ></app-action-buttons>
+    <app-action-buttons [card]="note"  ></app-action-buttons>
     </mat-card-actions>
   </mat-card>
 </div>

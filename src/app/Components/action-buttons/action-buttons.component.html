@@ -46,3 +46,34 @@
   <button mat-menu-item (click)="trashNote()">Delete note</button>
   <button mat-menu-item>Add label</button>
 </mat-menu>
+
+
+<mat-menu  #aboveMenu="matMenu" yPosition="below">
+  <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
+
+    <button matTooltip="Default" class="pallete bg-white" mat-menu-item></button>
+
+    <button matTooltip="Red"  (click)="isRed()" class="pallete bg-red" mat-menu-item></button>
+
+    <button matTooltip="Green" class="pallete bg-green" mat-menu-item></button>
+  </div>
+
+  <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
+
+    <button matTooltip="Ornage" class="pallete bg-orange" mat-menu-item></button>
+
+    <button matTooltip="Pink" class="pallete bg-pink" mat-menu-item></button>
+
+    <button matTooltip="Gray" class="pallete bg-gray" mat-menu-item></button>
+
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+
+    <button matTooltip="purple" class="pallete bg-purple" mat-menu-item></button>
+
+    <button matTooltip="Blue" class="pallete bg-blue " mat-menu-item></button>
+
+    <button matTooltip="Yellow" class="pallete bg-yellow" mat-menu-item></button>
+
+  </div>
+</mat-menu>

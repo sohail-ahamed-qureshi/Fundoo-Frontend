@@ -9,7 +9,7 @@
   <input mat-dialog-title formControlName="description" placeholder="description" value="{{data.description}}" />
 </div>
 <div fxLayoutAlign="end center">
-  <p>
+  <p matTooltip="Created: {{ createdDate | date:'short' }}">
     Edited: {{dateTime | date:'medium' }}
   </p>
 </div>

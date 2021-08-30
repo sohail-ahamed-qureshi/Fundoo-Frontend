@@ -8,15 +8,26 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./get-all-notes.component.scss'],
 })
 export class GetAllNotesComponent implements OnInit {
-  constructor( public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
   @Input() notes: any;
+  backgroundColor:any;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
-  openDialog(note:any) { 
-   let dialogRef = this.dialog.open(DialogContentComponent, {
+  bgColor(note:any){
+    return {'bgred': note.color == "#e75f5f",
+            'bgwhite': note.color == 'null' 
+  }
+
+  }
+
+
+
+  openDialog(note: any) {
+    let dialogRef = this.dialog.open(DialogContentComponent, {
       width: '500px',
-       data:note
+      data: note
     });
     dialogRef.afterClosed().subscribe()
   }

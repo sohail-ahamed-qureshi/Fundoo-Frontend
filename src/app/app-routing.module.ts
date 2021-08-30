@@ -1,10 +1,7 @@
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './Components/arhive-notes/arhive-notes.component';
 import { ReminderNotesComponent } from './Components/reminder-notes/reminder-notes.component';
-
 import { NotesComponent } from './Components/notes/notes.component';
-import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
-import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
