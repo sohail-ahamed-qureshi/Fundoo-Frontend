@@ -17,10 +17,25 @@ export class TakeNoteComponent implements OnInit {
   isArchive = false;
   isPin = false;
 
-  white="#ffffff";
-  red="#e75f5f";
-  color:any=this.white;
-  isRed=false;
+  white = "#ffffff";
+  red = "#e75f5f";
+  green = "#65e665";
+  orange = "#e28011";
+  pink = "#ee6ce3";
+  gray = "#c3c0c086";
+  purple = "#be7aeb";
+  blue = "#5eadee";
+  yellow = "#e7da65";
+  color: any = this.white;
+  isRed = false;
+  isGreen = false;
+  isYellow = false;
+  isBlue = false;
+  isOrange = false;
+  isPurple = false;
+  isGray = false;
+  isPink = false;
+  isWhite = false;
   isClose: boolean = true;
   isOpen: boolean = false;
   durationInSeconds = 3;
@@ -46,11 +61,72 @@ export class TakeNoteComponent implements OnInit {
     });
   }
 
-  ColorRed(){
-    this.isRed=true;
-    this.color=this.red;
-    console.log(this.color);
+
+
+  Color(code: any) {
+    this.isRed = false;
+    this.isGreen = false;
+    this.isYellow = false;
+    this.isBlue = false;
+    this.isOrange = false;
+    this.isPurple = false;
+    this.isGray = false;
+    this.isPink = false;
+    this.isWhite = false;
+    switch (code) {
+      case this.red:
+        this.isRed = !this.isRed;
+        this.color = this.red;
+        break;
+      case this.green:
+        this.color = this.green;
+        this.isGreen = !this.isGreen;
+        break;
+      case this.yellow:
+        this.color = this.yellow;
+        this.isYellow = !this.isYellow;
+        break;
+      case this.blue:
+        this.color = this.blue;
+        this.isBlue = !this.isBlue;
+        break;
+      case this.orange:
+        this.color = this.orange;
+        this.isOrange = !this.isOrange;
+        break;
+      case this.purple:
+        this.color = this.purple;
+        this.isPurple = !this.isPurple;
+        break;
+      case this.pink:
+        this.color = this.pink;
+        this.isPink = !this.isPink;
+        break;
+      case this.gray:
+        this.color = this.gray;
+        this.isGray = !this.isGray;
+        break;
+      case this.white:
+        this.color = this.white;
+        this.isWhite = !this.isWhite;
+        break;
+    }
   }
+
+  getColor() {
+    return {
+      'bg-red': this.isRed = this.isRed,
+      'bg-green': this.isGreen = this.isGreen,
+      'bg-yellow': this.isYellow = this.isYellow,
+      'bg-white': this.isWhite = this.isWhite,
+      'bg-blue': this.isBlue = this.isBlue,
+      'bg-gray': this.isGray = this.isGray,
+      'bg-purple': this.isPurple = this.isPurple,
+      'bg-pink': this.isPink = this.isPink,
+      'bg-orange':this.isOrange = this.isOrange
+  }
+  }
+
 
 
   AddNote() {

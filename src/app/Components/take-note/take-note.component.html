@@ -4,7 +4,7 @@
 </div>
 
 
-<form [formGroup]="takeNote"  [class.bg-red]="isRed"  *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
+<form [formGroup]="takeNote"  [ngClass]="getColor()"  *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
     <input *ngIf="isOpen" formControlName="title" placeholder="Title" />
     <div class="container" fxlayoutAlign="center center">
@@ -62,29 +62,29 @@
 <mat-menu  #aboveMenu="matMenu" yPosition="above">
   <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
 
-    <button matTooltip="Default" class="pallete bg-white" mat-menu-item></button>
+    <button matTooltip="Default" class="pallete bg-white" (click)="Color('#ffffff')" mat-menu-item></button>
 
-    <button matTooltip="Red" value="#e75f5f" (click)="ColorRed()" class="pallete bg-red" mat-menu-item></button>
+    <button matTooltip="Red" value="#e75f5f" (click)="Color('#e75f5f')" class="pallete bg-red" mat-menu-item></button>
 
-    <button matTooltip="Green" class="pallete bg-green" mat-menu-item></button>
+    <button matTooltip="Green" (click)="Color('#65e665')" class="pallete bg-green" mat-menu-item></button>
   </div>
 
   <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
 
-    <button matTooltip="Ornage" class="pallete bg-orange" mat-menu-item></button>
+    <button matTooltip="Ornage" (click)="Color('#e28011')" class="pallete bg-orange" mat-menu-item></button>
 
-    <button matTooltip="Pink" class="pallete bg-pink" mat-menu-item></button>
+    <button matTooltip="Pink" (click)="Color('#ee6ce3')" class="pallete bg-pink" mat-menu-item></button>
 
-    <button matTooltip="Gray" class="pallete bg-gray" mat-menu-item></button>
+    <button matTooltip="Gray" (click)="Color('#c3c0c086')" class="pallete bg-gray" mat-menu-item></button>
 
   </div>
   <div fxLayout="row" fxLayoutAlign="space-between center">
 
-    <button matTooltip="purple" class="pallete bg-purple" mat-menu-item></button>
+    <button matTooltip="purple" (click)="Color('#be7aeb')" class="pallete bg-purple" mat-menu-item></button>
 
-    <button matTooltip="Blue" class="pallete bg-blue " mat-menu-item></button>
+    <button matTooltip="Blue" (click)="Color('#5eadee')" class="pallete bg-blue " mat-menu-item></button>
 
-    <button matTooltip="Yellow" class="pallete bg-yellow" mat-menu-item></button>
+    <button matTooltip="Yellow" (click)="Color('#e7da65')" class="pallete bg-yellow" mat-menu-item></button>
 
   </div>
 </mat-menu>
