@@ -61,8 +61,6 @@ export class TakeNoteComponent implements OnInit {
     });
   }
 
-
-
   Color(code: any) {
     this.isRed = false;
     this.isGreen = false;

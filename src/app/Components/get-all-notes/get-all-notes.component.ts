@@ -10,16 +10,23 @@ import { MatDialog } from '@angular/material/dialog';
 export class GetAllNotesComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
   @Input() notes: any;
-  backgroundColor:any;
+  backgroundColor: any;
 
   ngOnInit(): void {
   }
 
-  bgColor(note:any){
-    return {'bgred': note.color == "#e75f5f",
-            'bgwhite': note.color == 'null' 
-  }
-
+  bgColor(note: any) {
+    return {
+      'bgred': note.color == "#e75f5f",
+      'bgwhite': note.color == '#ffffff' || note.color == null,
+      'bggreen': note.color == '#65e665',
+      'bgyellow': note.color == '#e7da65',
+      'bgpink': note.color == '#ee6ce3',
+      'bgpurple': note.color == '#be7aeb',
+      'bgorange': note.color == '#e28011',
+      'bggray': note.color == '#c3c0c086',
+      'bgblue': note.color == '#5eadee'
+    }
   }
 
 
