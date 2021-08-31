@@ -8,7 +8,15 @@
         <app-logo class="example-app-name" ></app-logo> 
       </div>
     </div>
-    <!-- search bar here -->
+    <div class="center searchBar " fxLayout="row"  fxLayoutAlign="start center" >
+      <div class="container" fxLayoutAlign="center center">
+        <button  class="my-button" (click)="searchNotes()" >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <input type="text" placeholder="Search"  [(ngModel)]="searchContent" >
+      {{searchContent}}
+    </div>
     <!-- profile picture -->
     </mat-toolbar>
   

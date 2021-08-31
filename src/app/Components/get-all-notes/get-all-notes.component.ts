@@ -1,3 +1,4 @@
+import { DataServiceService } from './../../services/data-service.service';
 import { DialogContentComponent } from './../dialog-content/dialog-content.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,12 +9,15 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./get-all-notes.component.scss'],
 })
 export class GetAllNotesComponent implements OnInit {
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dataService:DataServiceService) { }
   @Input() notes: any;
   backgroundColor: any;
-
+  searchWord:string="";
   ngOnInit(): void {
-  }
+    this.dataService.recievedMessage.subscribe((result:any) =>{
+      this.searchWord=result;
+    })
+    }
 
   bgColor(note: any) {
     return {
@@ -28,8 +32,6 @@ export class GetAllNotesComponent implements OnInit {
       'bgblue': note.color == '#5eadee'
     }
   }
-
-
 
   openDialog(note: any) {
     let dialogRef = this.dialog.open(DialogContentComponent, {

@@ -1,4 +1,4 @@
-<div class="mainSection"  fxLayoutAlign="space-between"   *ngFor="let note of notes; let i = index">
+<div class="mainSection"  fxLayoutAlign="space-between"   *ngFor="let note of notes | search:searchWord">
   <mat-card class="card" fxFlex.xs=100 [ngClass]="bgColor(note)" >
    <div fxLayout="row" >
     <div  (click)="openDialog(note)" fxFlex="88%">

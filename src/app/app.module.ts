@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LogoComponent } from './Components/logo/logo.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -36,6 +36,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { ActionButtonsComponent } from './Components/action-buttons/action-buttons.component';
 import { DialogContentComponent } from './Components/dialog-content/dialog-content.component';
+import { SearchPipe } from './Pipes/search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { DialogContentComponent } from './Components/dialog-content/dialog-conte
     ArhiveNotesComponent,
     ActionButtonsComponent,
     DialogContentComponent,
-    GetAllNotesComponent
+    GetAllNotesComponent,
+    SearchPipe
 
   ],
   imports: [
@@ -77,7 +79,8 @@ import { DialogContentComponent } from './Components/dialog-content/dialog-conte
     MatCardModule,
     MatTooltipModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

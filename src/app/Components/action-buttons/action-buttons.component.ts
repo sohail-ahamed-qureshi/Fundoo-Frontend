@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ActionButtonsComponent implements OnInit {
   @Input() card: any;
+  @Output() colorEvent = new EventEmitter<any>();
   durationInSeconds = 3;
   isArchiveNotes=false;
   isDeleteNotes=false;

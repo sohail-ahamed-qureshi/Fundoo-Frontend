@@ -11,7 +11,7 @@
     </button>
   </div>
   <div  class="container">
-    <button matTooltip="Color" class="my-button">
+    <button matTooltip="Color" [matMenuTriggerFor]="aboveMenu" class="my-button">
       <mat-icon>color_lens</mat-icon>
     </button>
   </div>
@@ -49,7 +49,7 @@
 
 
 <mat-menu  #aboveMenu="matMenu" yPosition="below">
-  <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
+  <div fxLayout="row"  class="spaces" fxLayoutAlign="space-between center">
 
     <button matTooltip="Default" class="pallete bg-white" mat-menu-item></button>
 
@@ -58,7 +58,7 @@
     <button matTooltip="Green" class="pallete bg-green" mat-menu-item></button>
   </div>
 
-  <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
+  <div fxLayout="row"  class="spaces" fxLayoutAlign="space-between center">
 
     <button matTooltip="Ornage" class="pallete bg-orange" mat-menu-item></button>
 

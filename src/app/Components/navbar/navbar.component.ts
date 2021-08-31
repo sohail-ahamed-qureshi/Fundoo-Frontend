@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DataServiceService } from './../../services/data-service.service';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,24 +10,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnDestroy, OnInit {
+export class NavbarComponent implements OnDestroy, OnInit, OnChanges {
 
   isExpandable:boolean = false;
   mobileQuery: MediaQueryList;
   fillerNav = Array.from({length: 10}, (_, i) => ``);
-
   fillerContent = Array.from({length: 10}, () =>
    "");
+   searchContent:string='';
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rout: Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rout: Router,
+    private dataService: DataServiceService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery.addListener(this._mobileQueryListener,);
+    
   }
 
-  ngOnInit(): void {
+  ngOnChanges(){
+      
+  }
+
+  searchNotes(){
+    this.dataService.sendMessage(this.searchContent);
+  }
+
+  ngOnInit(){
+    
   }
 
   ngOnDestroy(): void {
