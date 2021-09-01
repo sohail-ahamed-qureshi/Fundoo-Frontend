@@ -1,23 +1,23 @@
 .example-container {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position      : absolute;
+  top           : 0;
+  bottom        : 0;
+  left          : 0;
+  right         : 0;
 }
 
 .example-is-mobile .example-toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  z-index: 2;
-  border: 1px solid black;
- 
+  z-index : 2;
+  border  : 0.05px solid rgb(211, 205, 205);
+
 }
 
 .logo {
-  width: 45px;
+  width : 45px;
   height: 50px;
   cursor: pointer;
 }
@@ -25,7 +25,7 @@
 .example-app-name {
   padding-top: 20px;
   margin-left: 10px;
-  cursor: pointer;
+  cursor     : pointer;
 }
 
 .example-sidenav-container {
@@ -42,77 +42,100 @@
 
 
 .btnPosition {
- margin-left: 15px;
+  margin-left: 15px;
 
 }
 
-.navName{
-  font-size: 16px;
-  cursor: pointer;
+.navName {
+  font-size  : 16px;
+  cursor     : pointer;
   padding-top: 15px;
-  width: 220px;
-  transform: 300ms ease-in-out;
+  width      : 220px;
+  transform  : 300ms ease-in-out;
 }
 
-.navlist:hover{
+.navlist:hover {
   background-color: rgba(153, 147, 147, 0.5);
-  border-radius: 0 20px 20px 0;
+  border-radius   : 0 20px 20px 0;
 }
-.menuBtn , .navBtn{
+
+.menuBtn,
+.navBtn {
   transform: all 3s ease;
 }
 
-.navBtn:hover{
+.navBtn:hover {
   color: rgb(255, 255, 255);
 }
 
-.navlist:active{
+.navlist:active {
   background-color: rgba(236, 222, 96, 0.507);
 }
 
 .menuBtn:hover {
-   background-color: rgba(153, 147, 147, 0.5);
-  color: rgb(255, 255, 255);
+  background-color: rgba(153, 147, 147, 0.5);
+  color           : rgb(255, 255, 255);
 }
 
-.mat-sidenav-content{
+.mat-sidenav-content {
   padding: 2.5%;
 }
 
-.center{
-  margin:auto 3% ;
+.center {
+  margin: auto 3%;
 }
 
-.searchBar{
-  width:45%;
-  height: 45px ;
+.searchBar {
+
+  height          : 45px;
   background-color: #F1F3F4;
-  border: 0.05px solid rgb(211, 205, 205);
-  border-radius: 8px;
-  padding-left: 10px;
+  border          : 0.05px solid rgb(211, 205, 205);
+  border-radius   : 8px;
+  padding-left    : 10px;
+}
+
+@media only screen and (max-width: 599px) {
+
+
+  .logo {
+    width : 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
 }
 
 
-input{
-  width: 100%;
-  height: 100%;
-  border: none;
-  padding: 2%;
-  outline: none;
-  border-radius: 8px;
+.profile{
+  padding-right:20px;
+}
+
+input {
+  width           : 100%;
+  height          : 100%;
+  border          : none;
+  padding         : 2%;
+  outline         : none;
+  border-radius   : 8px;
   background-color: #F1F3F4;
 }
 
 .my-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  cursor: pointer;
-  border: none;
+  width           : 40px;
+  height          : 40px;
+  border-radius   : 50%;
+  cursor          : pointer;
+  border          : none;
   background-color: transparent;
 }
 
-.my-button:hover {
+.my-button:hover,
+.image:hover {
   background-color: rgba(153, 147, 147, 0.5);
 }
 
+.image {
+  background-image: url(../../../assets/avatar.png);
+  background-size : cover;
+  cursor          : pointer;
+}

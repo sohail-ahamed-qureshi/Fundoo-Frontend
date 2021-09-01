@@ -1,7 +1,14 @@
-.Logo{
-    font-size: 25px;
-    font-family: 'Architects Daughter', cursive;
+.Logo {
+    font-size     : 25px;
+    font-family   : 'Architects Daughter', cursive;
     letter-spacing: 2px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-weight   : bold;
+    margin-bottom : 20px;
+}
+
+
+@media only screen and (max-width: 599px) {
+    .Logo {
+        font-size: 18px;
+    }
 }

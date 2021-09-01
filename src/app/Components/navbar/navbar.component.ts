@@ -1,8 +1,10 @@
+import { MatIconRegistry } from '@angular/material/icon';
 import { DataServiceService } from './../../services/data-service.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navbar',
@@ -22,11 +24,10 @@ export class NavbarComponent implements OnDestroy, OnInit, OnChanges {
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rout: Router,
-    private dataService: DataServiceService) {
+    private dataService: DataServiceService ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener,);
-    
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnChanges(){
