@@ -4,9 +4,9 @@
 </div>
 
 
-<form [formGroup]="takeNote"  [ngClass]="getColor()"  *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
+<form [formGroup]="takeNote" [ngClass]="getColor()" *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
-    <input *ngIf="isOpen" formControlName="title" placeholder="Title" />
+    <input *ngIf="isOpen" [ngClass]="getColor()" formControlName="title" placeholder="Title" />
     <div class="container" fxlayoutAlign="center center">
       <mat-icon class="my-button pinBtn" [class.clicked]="isPin" (click)="isPin=!isPin">push_pin</mat-icon>
     </div>
@@ -14,8 +14,9 @@
   </div>
   <div class="notesBody">
     <div fxLayout="row" fxLayoutAlign="space-between center">
-      <input type="text" formControlName="description" placeholder="Take a note.." />
+      <input type="text"  [ngClass]="getColor()" formControlName="description" placeholder="Take a note.." />
     </div>
+
     <div class="noteAction" fxLayout="row" fxLayoutAlign.gt-sm="space-between center" fxLayoutAlign.lt-sm="none center">
       <div fxLayout="row" fxLayoutGap.gt-sm="20%" fxLayoutGap.lt-sm="0%">
         <div class="container">
@@ -50,7 +51,7 @@
             (click)="isMoreOpen=!isMoreOpen">
             <mat-icon>more_vert</mat-icon>
           </button>
-        </div>
+        </div> 
       </div>
       <div fxLayout="row">
         <button mat-button (click)="AddNote()">Close</button>
@@ -59,8 +60,8 @@
   </div>
 </form>
 
-<mat-menu  #aboveMenu="matMenu" yPosition="above">
-  <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  <div fxLayout="row" class="space" fxLayoutAlign="space-between center">
 
     <button matTooltip="Default" class="pallete bg-white" (click)="Color('#ffffff')" mat-menu-item></button>
 
@@ -69,7 +70,7 @@
     <button matTooltip="Green" (click)="Color('#65e665')" class="pallete bg-green" mat-menu-item></button>
   </div>
 
-  <div fxLayout="row"  class="space" fxLayoutAlign="space-between center">
+  <div fxLayout="row" class="space" fxLayoutAlign="space-between center">
 
     <button matTooltip="Ornage" (click)="Color('#e28011')" class="pallete bg-orange" mat-menu-item></button>
 

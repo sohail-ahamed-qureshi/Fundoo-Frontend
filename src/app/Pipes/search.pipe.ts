@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchPipe implements PipeTransform {
 
   transform(value: any, filterString: string ) {
-    if(value.length === 0 || filterString.length === 0){
+    if(value.length === 0 || filterString.length === 0 ){
       return value;
     }
     const notes = [];

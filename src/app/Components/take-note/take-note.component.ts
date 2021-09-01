@@ -135,6 +135,9 @@ export class TakeNoteComponent implements OnInit {
       this.isReminder = false;
       this.isArchive = false;
       this.isPin = false;
+      this.color=this.white;
+      this.isWhite = this.isWhite,
+      this.getColor();
       this.takeNote.controls['title'].setValue('');
       this.takeNote.controls['description'].setValue('');
       return;

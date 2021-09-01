@@ -11,22 +11,19 @@ export class ArhiveNotesComponent implements OnInit {
 
   constructor(private noteSerive: NoteService,
     private dataservice: DataServiceService) { }
-  output: any;
   notes = [];
-  
+
   ngOnInit(): void {
-  this.GetAllArchivedNotes();  
-  this.dataservice.recievedMessage.subscribe(response=>{
-    console.log(response);
+    this.dataservice.recievedMessage.subscribe(response => {
+      console.log(response)
+      this.GetAllArchivedNotes();
+    }),
     this.GetAllArchivedNotes();
-  })
   }
 
   GetAllArchivedNotes() {
-    this.noteSerive.GetAllNotes('Notes/Archive').subscribe((response) => {
-      this.output = response;
-      this.notes = this.output.data;
-      console.log(this.notes);     
+    this.noteSerive.GetAllNotes('Notes/Archive').subscribe((response:any) => {
+      this.notes = response.data;
     });
   }
 

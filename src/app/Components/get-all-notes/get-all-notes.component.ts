@@ -14,12 +14,12 @@ export class GetAllNotesComponent implements OnInit {
   backgroundColor: any;
   searchWord:string="";
   ngOnInit(): void {
-    this.dataService.recievedMessage.subscribe((result:any) =>{
+    this.dataService.recieveEvent.subscribe((result:any) =>{
       this.searchWord=result;
     })
     }
 
-  bgColor(note: any) {
+  bgColor(note:any) {
     return {
       'bgred': note.color == "#e75f5f",
       'bgwhite': note.color == '#ffffff' || note.color == null,

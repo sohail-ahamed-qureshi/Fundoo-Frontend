@@ -3,60 +3,61 @@
 }
 
 .card {
-  width: 240px;
-  min-height: 100px;
-  max-height: 300px;
+  width     : 240px;
+  
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 8px;
-  transform: all 3s ease-in;
-  word-wrap:break-word;
+  transform    : all 3s ease-in;
+  word-wrap    : break-word;
 }
-.card:not(:last-child){
-  margin-right:10px;
+
+.card:not(:last-child) {
+  margin-right: 10px;
 }
+
 .card:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.bgred{
+.bgred {
   background-color: #e75454;
 }
 
-.bgwhite{
+.bgwhite {
   background-color: #ffffff;
 }
 
-.bggreen{
+.bggreen {
   background-color: #65e665;
 }
 
-.bgorange{
+.bgorange {
   background-color: #e28011;
 }
 
-.bggray{
+.bggray {
   background-color: #c3c0c086;
 }
 
-.bgpink{
+.bgpink {
   background-color: #ee6ce3;
 }
 
-.bgpurple{
+.bgpurple {
   background-color: #be7aeb;
 }
 
-.bgblue{
+.bgblue {
   background-color: #5eadee;
 }
 
-.bgyellow{
+.bgyellow {
   background-color: #e7da65;
 }
 
 mat-card-content p {
-  font-size: 16px;
+  font-size  : 16px;
   font-family: "Roboto", sans-serif;
 }
 
@@ -65,12 +66,12 @@ mat-icon {
 }
 
 .my-button {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  cursor: pointer;
-  padding-top: 4px;
-  border: none;
+  width           : 30px;
+  height          : 30px;
+  border-radius   : 15px;
+  cursor          : pointer;
+  padding-top     : 4px;
+  border          : none;
   background-color: transparent;
 }
 

@@ -35,7 +35,7 @@ export class NavbarComponent implements OnDestroy, OnInit, OnChanges {
   }
 
   searchNotes(){
-    this.dataService.sendMessage(this.searchContent);
+    this.dataService.SendEvent(this.searchContent);
   }
 
   ngOnInit(){
