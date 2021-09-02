@@ -39,6 +39,9 @@ export class NavbarComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(){
+    this.dataService.recieveLabel.subscribe(response=>{
+      this.GetAllLabels();
+    });
     this.GetAllLabels();
   }
 

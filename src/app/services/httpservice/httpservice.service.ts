@@ -98,4 +98,13 @@ export class HttpserviceService {
     return this.http.get(this.baseUrl+url,httpOptions);
   }
 
+  CreateLabel(url:any, data:any){
+    let token = localStorage.getItem('token');
+    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
+    let httpOptions = {
+      headers : headerObject
+    }
+    return this.http.post(this.baseUrl+url, data, httpOptions);
+  }
+
 }

@@ -5,10 +5,14 @@ import { HttpserviceService } from '../httpservice/httpservice.service';
 })
 export class LabelService {
 
-  constructor( private httpService: HttpserviceService) { }
+  constructor(private httpService: HttpserviceService) { }
 
-GetLabels(url:any){
-  return this.httpService.GetAllLabels(url);
-}
+  GetLabels(url: any) {
+    return this.httpService.GetAllLabels(url);
+  }
+
+  CreateLabel(data: any) {
+    return this.httpService.CreateLabel("Notes/Label", data);
+  }
 
 }

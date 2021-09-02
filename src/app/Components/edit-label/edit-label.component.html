@@ -10,8 +10,8 @@
     <div [formGroup]="labelForm" >
         <input type="text" class="" formControlName="newLabelName" placeholder="Create new label">
     </div>
-    <div class="container ">
-        <button matTooltip="close" class="my-button">
+    <div class="container" (click)="AddLabel()" >
+        <button matTooltip="close" class="my-button" >
             <mat-icon>check</mat-icon>
         </button>
     </div>
@@ -45,8 +45,8 @@
         </button>
     </div>
 </div>
-<div class="closeBtn" fxLayoutAlign="end " (click)="editable=false && change=false">
-    <button mat-button>
+<div class="closeBtn" fxLayoutAlign="end " [mat-dialog-close] (click)="AddLabel()">
+    <button mat-button  >
         Done
     </button>
 </div>
