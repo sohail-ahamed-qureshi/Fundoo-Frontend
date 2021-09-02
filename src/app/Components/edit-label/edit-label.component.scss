@@ -1,3 +1,45 @@
-.labels{
-    padding: 10px 5px;
+.labels {
+    
 }
+
+.newLabel{
+    margin-bottom: 5px;
+}
+
+.my-button {
+    width           : 30px;
+    height          : 30px;
+    border-radius   : 15px;
+    cursor          : pointer;
+    padding-top     : 4px;
+    border          : none;
+    background-color: transparent;
+}
+
+.my-button:hover {
+    background-color: rgba(153, 147, 147, 0.5);
+}
+
+input {
+    // width         : 80%;
+    outline       : none;
+    border-top    : none;
+    border-left   : none;
+    border-right  : none;
+    border-bottom : 0.05px solid gray;
+    padding-bottom: 5px;
+}
+
+.labelName {
+    width: 80%;
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+.marginAlign{
+   
+}
+
+mat-icon {
+    font-size: 18px;
+  }

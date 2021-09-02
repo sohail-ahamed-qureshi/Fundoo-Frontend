@@ -1,16 +1,52 @@
 <div class="header">
-<h4>Edit Labels</h4>
+    <h4>Edit Labels</h4>
 </div>
-<div class="newLabel" fxLayout="row" fxLayoutAlign="center center" >
-    <mat-icon>close</mat-icon>
-<input type="text" placeholder="Create new label" >
-<mat-icon>check</mat-icon>
+<div class="newLabel" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="container marginAlign ">
+        <button matTooltip="close" class="my-button">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div [formGroup]="labelForm" >
+        <input type="text" class="" formControlName="newLabelName" placeholder="Create new label">
+    </div>
+    <div class="container ">
+        <button matTooltip="close" class="my-button">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
 </div>
-<div class="labels" *ngFor="let label of labels" fxLayout="row" fxLayoutAlign="center center" >
-    <mat-icon>label</mat-icon>
-    <p>
+<div class="labels" *ngFor="let label of labels" fxFlexAlign="center" fxLayout="row"
+    fxLayoutAlign="space-between center"  >
+
+    <div class="container"   *ngIf=" !editable">
+        <button class="my-button">
+            <mat-icon>label</mat-icon>
+        </button>
+    </div>
+
+    <div class="container"  *ngIf="editable">
+        <button matTooltip="Delete label" class="my-button">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <p class="labelName" *ngIf="!editable" (click)="editable=!editable && change=!change"  >
         {{label.labelName}}
     </p>
-    <mat-icon>edit</mat-icon>
+    <input type="text" *ngIf="editable" value="{{label.labelName}}" >
+    <div class="container " *ngIf="!editable">
+        <button matTooltip="Rename label" class="my-button">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+    <div class="container " *ngIf="editable">
+        <button matTooltip="close" class="my-button">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
 </div>
-
+<div class="closeBtn" fxLayoutAlign="end " (click)="editable=false && change=false">
+    <button mat-button>
+        Done
+    </button>
+</div>

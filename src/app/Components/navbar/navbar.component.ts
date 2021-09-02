@@ -1,3 +1,4 @@
+import { LabelService } from './../../services/label-service/label.service';
 import { EditLabelComponent } from './../edit-label/edit-label.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataServiceService } from './../../services/data-service.service';
@@ -20,15 +21,17 @@ export class NavbarComponent implements OnDestroy, OnInit {
   fillerContent = Array.from({length: 10}, () =>
    "");
    searchContent:string='';
-
+  labels:any;
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rout: Router,
     private dataService: DataServiceService,
+    private labelService: LabelService,
     public dialog: MatDialog ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    
   }
 
   searchNotes(){
@@ -36,7 +39,14 @@ export class NavbarComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(){
-    
+    this.GetAllLabels();
+  }
+
+  GetAllLabels(){
+    this.labelService.GetLabels("Notes/Labels").subscribe((response:any)=>{
+    this.labels=response.labels;
+    this.dataService.sendMessage(this.labels);
+    })
   }
 
   ngOnDestroy(): void {
@@ -59,8 +69,11 @@ export class NavbarComponent implements OnDestroy, OnInit {
     this.rout.navigateByUrl('home/trash');
   }
 
-  openDialog(){
-   this.dialog.open(EditLabelComponent)
+  openDialog(labels:any){
+   let diaLogRef = this.dialog.open(EditLabelComponent, {
+     data:labels
+   });
+   diaLogRef.afterClosed().subscribe()
   }
 
 }
