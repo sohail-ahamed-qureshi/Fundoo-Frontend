@@ -1,12 +1,13 @@
-<form [formGroup]="cardForm" >
-<div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
-  <input mat-dialog-title formControlName="title" placeholder="Title" value="{{data.title}}" />
-  <div class="container" fxlayoutAlign="center center">
+
+<form [formGroup]="cardForm" [ngClass]="bgColor()" >
+<div class="notesTitle"   fxLayout="row" fxLayoutAlign="space-between center">
+  <input mat-dialog-title [ngClass]="bgColor()" formControlName="title" placeholder="Title" value="{{data.title}}" />
+  <div class="container"  fxlayoutAlign="center center">
     <mat-icon class="my-button pinBtn" [class.clicked]="true">push_pin</mat-icon>
   </div>
 </div>
 <div>
-  <input mat-dialog-title formControlName="description" placeholder="description" value="{{data.description}}" />
+  <input mat-dialog-title [ngClass]="bgColor()" formControlName="description" placeholder="description" value="{{data.description}}" />
 </div>
 <div fxLayoutAlign="end center">
   <p matTooltip="Created: {{ createdDate | date:'short' }}">
@@ -14,7 +15,7 @@
   </p>
 </div>
 </form>
-<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center"  >
-  <app-action-buttons   ></app-action-buttons>
+<mat-dialog-actions [ngClass]="bgColor()" fxLayout="row" fxLayoutAlign="space-between center"  >
+  <app-action-buttons [card]="data"></app-action-buttons>
   <button mat-button mat-dialog-close (click)="OnUpdate()">Close</button>
 </mat-dialog-actions>

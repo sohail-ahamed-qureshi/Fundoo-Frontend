@@ -142,7 +142,6 @@ export class ActionButtonsComponent implements OnInit {
   isArchive() {
     this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
       this.dataService.sendMessage(response);
-      console.log(response);
       this.openSnackBar(response.message)
     },
       error => {
@@ -152,7 +151,6 @@ export class ActionButtonsComponent implements OnInit {
   }
 
   trashNote() {
-    console.log(this.card.noteId);
     this.noteService.trashNote('Notes/' + this.card.noteId + '/trash').subscribe((response: any) => {
       this.dataService.sendMessage(response);
       this.openSnackBar(response.message)
@@ -164,7 +162,6 @@ export class ActionButtonsComponent implements OnInit {
   }
 
   DeleteNote() {
-    console.log(this.card.noteId);
     this.noteService.trashNote('Notes/' + this.card.noteId).subscribe((response: any) => {
       this.dataService.sendMessage(response);
       this.openSnackBar(response.message)

@@ -37,6 +37,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ActionButtonsComponent } from './Components/action-buttons/action-buttons.component';
 import { DialogContentComponent } from './Components/dialog-content/dialog-content.component';
 import { SearchPipe } from './Pipes/search.pipe';
+import { EditLabelComponent } from './Components/edit-label/edit-label.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { SearchPipe } from './Pipes/search.pipe';
     ActionButtonsComponent,
     DialogContentComponent,
     GetAllNotesComponent,
-    SearchPipe
+    SearchPipe,
+    EditLabelComponent
 
   ],
   imports: [

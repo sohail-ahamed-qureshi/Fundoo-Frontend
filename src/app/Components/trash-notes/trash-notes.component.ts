@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trash-notes.component.scss']
 })
 export class TrashNotesComponent implements OnInit {
-  output: any;
   notes = [];
   constructor(private note: NoteService,
     private dataservice: DataServiceService) { }
@@ -21,9 +20,8 @@ export class TrashNotesComponent implements OnInit {
 }
 
   GetAllNotes() {
-    this.note.GetAllNotes('Notes/trash').subscribe((response) => {
-      this.output = response;
-      this.notes = this.output.data;     
+    this.note.GetAllNotes('Notes/trash').subscribe((response:any) => {
+      this.notes = response.data;    
     });
   }
 

@@ -9,17 +9,17 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./get-all-notes.component.scss'],
 })
 export class GetAllNotesComponent implements OnInit {
-  constructor(public dialog: MatDialog, private dataService:DataServiceService) { }
+  constructor(public dialog: MatDialog, private dataService: DataServiceService) { }
   @Input() notes: any;
   backgroundColor: any;
-  searchWord:string="";
+  searchWord: string = "";
   ngOnInit(): void {
-    this.dataService.recieveEvent.subscribe((result:any) =>{
-      this.searchWord=result;
+    this.dataService.recieveEvent.subscribe((result: any) => {
+      this.searchWord = result;
     })
-    }
+  }
 
-  bgColor(note:any) {
+  bgColor(note: any) {
     return {
       'bgred': note.color == "#e75f5f",
       'bgwhite': note.color == '#ffffff' || note.color == null,
@@ -37,6 +37,7 @@ export class GetAllNotesComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogContentComponent, {
       width: '500px',
       data: note
+      
     });
     dialogRef.afterClosed().subscribe()
   }

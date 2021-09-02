@@ -61,7 +61,7 @@
           </button>
           <p class="navName " *ngIf="isExpandable">Reminder</p>
         </div>
-        <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+        <div class="navlist" (click)="openDialog()"  fxLayout="row"  fxLayoutAlign="start center" (mouseover)="isExpandable=true"
           fxLayoutGap="20px" mat-list-item routerLink="/home">
           <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <mat-icon>edit</mat-icon>

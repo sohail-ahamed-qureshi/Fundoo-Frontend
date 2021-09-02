@@ -1,10 +1,10 @@
-import { MatIconRegistry } from '@angular/material/icon';
+import { EditLabelComponent } from './../edit-label/edit-label.component';
+import { MatDialog } from '@angular/material/dialog';
 import { DataServiceService } from './../../services/data-service.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnDestroy, OnInit, OnChanges {
+export class NavbarComponent implements OnDestroy, OnInit {
 
   isExpandable:boolean = false;
   mobileQuery: MediaQueryList;
@@ -24,14 +24,11 @@ export class NavbarComponent implements OnDestroy, OnInit, OnChanges {
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rout: Router,
-    private dataService: DataServiceService ) {
+    private dataService: DataServiceService,
+    public dialog: MatDialog ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-  }
-
-  ngOnChanges(){
-      
   }
 
   searchNotes(){
@@ -60,6 +57,10 @@ export class NavbarComponent implements OnDestroy, OnInit, OnChanges {
 
   routeToTrash(){
     this.rout.navigateByUrl('home/trash');
+  }
+
+  openDialog(){
+   this.dialog.open(EditLabelComponent)
   }
 
 }

@@ -43,17 +43,31 @@ export class DialogContentComponent implements OnInit {
     let reqPayload = {
       noteId: this.data.noteId,
       title: this.cardForm.value.title,
-      description: this.cardForm.value.description
+      description: this.cardForm.value.description,
+      color:this.data.color
     }
     this.noteService.UpdateNote('Notes', reqPayload).subscribe(response => {
       this.output = response;
       this.openSnackBar(this.output.message);
-      console.log(this.output.data);
       this.dataService.sendMessage(this.output.data);
     },
       error => {
         this.openSnackBar(error.message);
       })
+  }
+
+  bgColor() {
+    return {
+      'bgred': this.data.color == "#e75f5f",
+      'bgwhite': this.data.color == '#ffffff' || this.data.color == null,
+      'bggreen': this.data.color == '#65e665',
+      'bgyellow': this.data.color == '#e7da65',
+      'bgpink': this.data.color == '#ee6ce3',
+      'bgpurple': this.data.color == '#be7aeb',
+      'bgorange': this.data.color == '#e28011',
+      'bggray': this.data.color == '#c3c0c086',
+      'bgblue': this.data.color == '#5eadee'
+    }
   }
 
 }

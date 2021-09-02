@@ -1,0 +1,16 @@
+<div class="header">
+<h4>Edit Labels</h4>
+</div>
+<div class="newLabel" fxLayout="row" fxLayoutAlign="center center" >
+    <mat-icon>close</mat-icon>
+<input type="text" placeholder="Create new label" >
+<mat-icon>check</mat-icon>
+</div>
+<div class="labels" *ngFor="let label of labels" fxLayout="row" fxLayoutAlign="center center" >
+    <mat-icon>label</mat-icon>
+    <p>
+        {{label.labelName}}
+    </p>
+    <mat-icon>edit</mat-icon>
+</div>
+

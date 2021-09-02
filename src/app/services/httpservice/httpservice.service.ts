@@ -88,4 +88,14 @@ export class HttpserviceService {
     return this.http.delete(this.baseUrl+url,httpOptions);
   }
 
+
+  GetAllLabels(url:any){
+    let token = localStorage.getItem('token');
+    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
+    let httpOptions = {
+      headers : headerObject
+    }
+    return this.http.get(this.baseUrl+url,httpOptions);
+  }
+
 }
