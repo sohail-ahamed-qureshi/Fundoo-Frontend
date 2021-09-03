@@ -8,6 +8,13 @@
   right         : 0;
 }
 
+
+.customDialog{
+  mat-dialog-container{
+    padding: 0px !important;
+  }
+}
+
 .example-is-mobile .example-toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */

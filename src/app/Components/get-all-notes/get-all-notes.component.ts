@@ -36,7 +36,8 @@ export class GetAllNotesComponent implements OnInit {
   openDialog(note: any) {
     let dialogRef = this.dialog.open(DialogContentComponent, {
       width: '500px',
-      data: note
+      data: note,
+      
       
     });
     dialogRef.afterClosed().subscribe()

@@ -17,43 +17,61 @@ export class EditLabelComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public labels: any) { }
-  change=false;
-  editable=false;
-  labelForm!:FormGroup;
-  error:string="";
-  durationInSeconds=2;
+  change = false;
+  editable = false;
+  labelForm!: FormGroup;
+  error: string = "";
+  durationInSeconds = 2;
   ngOnInit() {
     this.labelForm = this.formBuilder.group({
-      newLabelName:['',[Validators.required, Validators.minLength(1)]]
+      newLabelName: ['', [Validators.required, Validators.minLength(2)]]
     });
-    this.dataService.recievedMessage.subscribe(response =>{
-      this.labels=response;
+    this.dataService.recievedMessage.subscribe(response => {
+      this.labels = response;
     })
 
   }
 
-  AddLabel(){
-    if(this.labelForm.invalid){
-        this.editable=false;
+  AddLabel() {
+    this.editable = false;
+    if (this.labelForm.invalid) {
+      return;
     }
-    let reqPayLoad ={
+    let reqPayLoad = {
       labelName: this.labelForm.value.newLabelName
     }
-    this.labelService.CreateLabel(reqPayLoad).subscribe((response:any)=>{
+    this.labelService.CreateLabel(reqPayLoad).subscribe((response: any) => {
       console.log(response);
       this.labelForm.controls['newLabelName'].setValue('');
       this.dataService.sendlabelMessage(response);
     },
-    (error:any) =>{
-      this.error=error.error.message;
-      this.openSnackBar(this.error);
-    })
+      (error: any) => {
+        this.error = error.error.message;
+        this.openSnackBar(this.error);
+      })
   }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'OK', {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  Cancel() {
+    return this.labelForm.controls['newLabelName'].setValue('');
+  }
+
+  DeleteLabel(label: any) {
+    this.editable = false;
+    this.labelService.DeleteLabel(label.labelId).subscribe((response: any) => {
+      this.dataService.sendlabelMessage(response);
+      this.openSnackBar(response.message);
+    })
+
+  }
+
+  UpdateLabel(label: any) {
+
   }
 
 

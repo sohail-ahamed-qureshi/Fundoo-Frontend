@@ -3,7 +3,7 @@
 </div>
 <div class="newLabel" fxLayout="row" fxLayoutAlign="space-between center">
     <div class="container marginAlign ">
-        <button matTooltip="close" class="my-button">
+        <button matTooltip="close" class="my-button" (click)="Cancel()"  >
             <mat-icon>close</mat-icon>
         </button>
     </div>
@@ -20,12 +20,12 @@
     fxLayoutAlign="space-between center"  >
 
     <div class="container"   *ngIf=" !editable">
-        <button class="my-button">
+        <button class="my-button" type="submit" >
             <mat-icon>label</mat-icon>
         </button>
     </div>
 
-    <div class="container"  *ngIf="editable">
+    <div class="container"  *ngIf="editable" (click)="DeleteLabel(label)" >
         <button matTooltip="Delete label" class="my-button">
             <mat-icon>delete</mat-icon>
         </button>
@@ -39,14 +39,14 @@
             <mat-icon>edit</mat-icon>
         </button>
     </div>
-    <div class="container " *ngIf="editable">
-        <button matTooltip="close" class="my-button">
+    <div class="container " *ngIf="editable" (click)="UpdateLabel(label)">
+        <button matTooltip="Update label" class="my-button">
             <mat-icon>check</mat-icon>
         </button>
     </div>
 </div>
 <div class="closeBtn" fxLayoutAlign="end " [mat-dialog-close] (click)="AddLabel()">
-    <button mat-button  >
+    <button mat-button type="submit" >
         Done
     </button>
 </div>

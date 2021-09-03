@@ -74,7 +74,8 @@ export class NavbarComponent implements OnDestroy, OnInit {
 
   openDialog(labels:any){
    let diaLogRef = this.dialog.open(EditLabelComponent, {
-     data:labels
+     data:labels,
+     panelClass:'customDialog'
    });
    diaLogRef.afterClosed().subscribe()
   }
