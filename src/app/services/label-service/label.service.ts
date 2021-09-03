@@ -19,4 +19,8 @@ export class LabelService {
     return this.httpService.DeleteLabel("Notes/"+data+"/Label");
   }
 
+  UpdateLabel(data:any){
+    return this.httpService.UpdateLabel("Notes/Labels",data);
+  }
+
 }

@@ -1,5 +1,5 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataServiceService } from './../../services/data-service.service';
 import { LabelService } from './../../services/label-service/label.service';
@@ -20,6 +20,7 @@ export class EditLabelComponent implements OnInit {
   change = false;
   editable = false;
   labelForm!: FormGroup;
+  updateLabel:any;
   error: string = "";
   durationInSeconds = 2;
   ngOnInit() {
@@ -28,8 +29,8 @@ export class EditLabelComponent implements OnInit {
     });
     this.dataService.recievedMessage.subscribe(response => {
       this.labels = response;
-    })
-
+    });
+    
   }
 
   AddLabel() {
@@ -70,8 +71,29 @@ export class EditLabelComponent implements OnInit {
 
   }
 
-  UpdateLabel(label: any) {
+  BindValue(updateLabel:any){
+    this.updateLabel=updateLabel;
+  }
 
+  UpdateLabel(label: any) {
+    if(label.labelName == this.updateLabel){
+      return;
+    }
+    let reqpayLoad = {
+      labelId:label.labelId,
+      labelName:this.updateLabel,
+      userId:label.userId
+    }
+    this.labelService.UpdateLabel(reqpayLoad).subscribe((response:any)=>{
+      this.dataService.sendlabelMessage(response);
+      this.openSnackBar(response.message);
+      this.editable=false;
+    },
+    error=>{
+      this.openSnackBar(error.error.message);
+    }
+    )
+      
   }
 
 

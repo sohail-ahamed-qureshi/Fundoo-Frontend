@@ -33,15 +33,17 @@
     <p class="labelName" *ngIf="!editable" (click)="editable=!editable && change=!change"  >
         {{label.labelName}}
     </p>
-    <input type="text" *ngIf="editable" value="{{label.labelName}}" >
+    <div   *ngIf="editable">
+    <input type="text"  #updateLabel (input)="BindValue(updateLabel.value)" value="{{label.labelName}}" >
+    </div>
+    <div class="container " *ngIf="editable"  (click)="UpdateLabel(label)">
+        <button matTooltip="Update label" class="my-button">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
     <div class="container " *ngIf="!editable">
         <button matTooltip="Rename label" class="my-button">
             <mat-icon>edit</mat-icon>
-        </button>
-    </div>
-    <div class="container " *ngIf="editable" (click)="UpdateLabel(label)">
-        <button matTooltip="Update label" class="my-button">
-            <mat-icon>check</mat-icon>
         </button>
     </div>
 </div>
