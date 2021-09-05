@@ -21,6 +21,10 @@ export class ActionButtonsComponent implements OnInit {
   isDeleteNotes = false;
   showLabels=false;
 
+  isReminder = false;
+  isArchive = false;
+  isPin = false;
+
   white = "#ffffff";
   red = "#e75f5f";
   green = "#65e665";
@@ -46,7 +50,19 @@ export class ActionButtonsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private labelService: LabelService) { }
 
+    @Input() component:any;
+    takeANote=false;
+    GetAllNotes=false;
   ngOnInit(): void {
+    if(this.component == "isTakeANote" ){
+        this.takeANote=true;
+        }
+        else{
+      this.GetAllNotes= true;
+    }
+
+
+
     let route: any = this.activatedRoute.snapshot.component
     if (route == ArhiveNotesComponent) {
       this.isArchiveNotes = true;
@@ -66,12 +82,13 @@ export class ActionButtonsComponent implements OnInit {
     } 
     this.labelService.TagLabel(reqpayLoad).subscribe((response)=>{
       this.dataService.send(response);
-
+      
     }, error=>{
       this.openSnackBar(error.error.message);
     })
   }
 
+  // pending
   CreateNewLabel(searchLabel:any){
     if(this.labels.length == 0){
       console.log(searchLabel)
@@ -127,13 +144,18 @@ export class ActionButtonsComponent implements OnInit {
         this.isWhite = !this.isWhite;
         break;
     }
-    let colorData = {
-      noteId: this.card.noteId,
-      color: this.color,
-      title:this.card.title,
-      description:this.card.description
+    if(this.takeANote){
+      this.colorEvent.emit(this.color);
     }
-    this.OnUpdate(colorData);
+    if(this.GetAllNotes){
+      let colorData = {
+        noteId: this.card.noteId,
+        color: this.color,
+        title:this.card.title,
+        description:this.card.description
+      }
+      this.OnUpdate(colorData);
+    }
   }
 
   getColor() {
@@ -166,15 +188,23 @@ export class ActionButtonsComponent implements OnInit {
     });
   }
 
-  isArchive() {
-    this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
-      this.dataService.sendMessage(response);
-      this.openSnackBar(response.message)
-    },
-      error => {
-        this.openSnackBar(error.message)
-      }
-    )
+  Archive() {
+    if(this.GetAllNotes){
+      this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
+        this.dataService.sendMessage(response);
+        this.openSnackBar(response.message)
+      },
+        error => {
+          this.openSnackBar(error.message)
+        }
+      );
+    }
+    if(this.takeANote){
+      // for take anotes
+      console.log("clicked on archive in take a notes")
+      this.isArchive= true;
+    }
+   
   }
 
   trashNote() {

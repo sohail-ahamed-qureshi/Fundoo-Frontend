@@ -81,42 +81,12 @@ input{
   margin-bottom:5px;
 }
 
-.bg-white{
-  background-color: #ffffff;
+@media only screen and (min-width: 599px){
+  :host ::ng-deep app-action-buttons .container{
+    padding-right:20% ;
+  }
+  
 }
-
-.bg-red{
-  background-color: #e75f5f;
-}
-
-.bg-green{
-  background-color: #65e665;
-}
-
-.bg-orange{
-  background-color: #e28011;
-}
-
-.bg-gray{
-  background-color: #c3c0c086;
-}
-
-.bg-pink{
-  background-color: #ee6ce3;
-}
-
-.bg-purple{
-  background-color: #be7aeb;
-}
-
-.bg-blue{
-  background-color: #5eadee;
-}
-
-.bg-yellow{
-  background-color: #e7da65;
-}
-
 
 
 
@@ -131,6 +101,10 @@ input{
     border: none;
     background-color: transparent;
   }
+
+  // :host ::ng-deep app-action-buttons .container{
+  //   padding-right:0px ;
+  // }
 }
 
 .my-button:hover {

@@ -19,6 +19,7 @@ export class GetAllNotesComponent implements OnInit {
   removable=false;
   backgroundColor: any;
   searchWord: string = "";
+  parentName="isGetAllNotes";
   ngOnInit(): void {
     this.dataService.recieveEvent.subscribe((result: any) => {
       this.searchWord = result;
