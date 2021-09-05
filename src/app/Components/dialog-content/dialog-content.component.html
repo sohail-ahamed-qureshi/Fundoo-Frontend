@@ -7,7 +7,9 @@
   </div>
 </div>
 <div>
-  <input mat-dialog-title [ngClass]="bgColor()" formControlName="description" placeholder="description" value="{{data.description}}" />
+  <!-- <textarea [ngClass]="bgColor()" formControlName="description" placeholder="description" value="{{data.description}}" />
+</textarea> -->
+<textarea   [ngClass]="bgColor()" formControlName="description" placeholder="description" value="{{data.description}}" cols="30" rows="auto" ></textarea>
 </div>
 <div fxLayoutAlign="end center">
   <p matTooltip="Created: {{ createdDate | date:'short' }}">

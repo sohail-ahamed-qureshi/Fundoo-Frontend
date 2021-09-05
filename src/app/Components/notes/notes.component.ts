@@ -10,17 +10,21 @@ import { NoteService } from 'src/app/services/note-service/note.service';
 export class NotesComponent implements OnInit {
   constructor(private note: NoteService,
     private dataservice: DataServiceService) { }
-  notes = [];
+  notes:any =[];
   ngOnInit(): void {
     this.GetAllNotes();
     this.dataservice.recievedMessage.subscribe(response => {
       this.GetAllNotes();
-    })
+    });
+    this.dataservice.refreshLabel.subscribe(response => {
+      this.GetAllNotes();
+    });
   }
 
   Refresh(event: any) {
     this.GetAllNotes();
   }
+
 
   GetAllNotes() {
     this.note.GetAllNotes('Notes').subscribe((response: any) => {
@@ -28,4 +32,6 @@ export class NotesComponent implements OnInit {
       this.notes.reverse();
     });
   }
+
+
 }

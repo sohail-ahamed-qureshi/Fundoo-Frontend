@@ -3,26 +3,34 @@
 }
 
 .card {
-  width     : 240px;
-  
+  width     : 236px;
+  min-height: 30px !important;
+  max-height: auto;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 8px;
   transform    : all 3s ease-in;
-  word-wrap    : break-word;
-}
+  padding: 10px;
 
-.card:not(:last-child) {
-  margin-right: 10px;
 }
-
 .card:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.customDialog{
+.description{
+  max-height: 150px;
+ text-overflow: ellipsis;
+ word-wrap: break-word;
+ overflow: hidden;
+  
+}
+
+::ng-deep .customDialog{
   mat-dialog-container{
-    padding: 0;
+    padding: 0px;
+    min-height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
   }
 }
 
@@ -62,7 +70,7 @@
   background-color: #e7da65;
 }
 
-mat-card-content p {
+ p {
   font-size  : 16px;
   font-family: "Roboto", sans-serif;
 }
@@ -83,4 +91,28 @@ mat-icon {
 
 .my-button:hover {
   background-color: rgba(153, 147, 147, 0.5);
+}
+
+mat-chip-list{
+  padding-top: 4px;
+}
+
+ mat-chip {
+  min-width: 40px;
+  height: 20px !important;
+  text-align: center;
+  padding: 5px 3px !important;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+
+mat-chip:hover{
+  text-overflow: ellipsis;
+}
+
+
+mat-chip > span{
+    width: 100%;
 }

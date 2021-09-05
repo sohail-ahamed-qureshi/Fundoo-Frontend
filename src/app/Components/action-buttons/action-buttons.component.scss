@@ -1,77 +1,96 @@
-
 mat-icon {
-    font-size: 18px;
-  }
+  font-size: 18px;
+}
 
-  .space{
-    padding-left: 5px;
-  }
+.space {
+  padding-left: 5px;
+}
+
 .my-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    cursor: pointer;
-    padding-top: 4px;
-    border: none;
-    background-color: transparent;
-  }
-  
-  .my-button:hover {
-    background-color: rgba(153, 147, 147, 0.5);
-  }
+  width           : 30px;
+  height          : 30px;
+  border-radius   : 15px;
+  cursor          : pointer;
+  padding-top     : 4px;
+  border          : none;
+  background-color: transparent;
+}
 
-  .pallete{
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    cursor: pointer;
-    padding-top: 4px;
-    border: none;
-  
-  }
-  
-  .pallete:hover{
-    border: 1px solid black;
-    color: none;
-  }
-  
+.my-button:hover {
+  background-color: rgba(153, 147, 147, 0.5);
+}
 
-  .spaces{
-    margin-bottom:5px;
-  }
+.pallete {
+  width        : 30px;
+  height       : 30px;
+  border-radius: 15px;
+  cursor       : pointer;
+  padding-top  : 4px;
+  border       : none;
 
-.bg-white{
+}
+
+.pallete:hover {
+  border: 1px solid black;
+  color : none;
+}
+
+
+.spaces {
+  margin-bottom: 5px;
+}
+
+.bg-white {
   background-color: #ffffff;
 }
 
-.bg-red{
+.bg-red {
   background-color: #e75f5f;
 }
 
-.bg-green{
+.bg-green {
   background-color: #65e665;
 }
 
-.bg-orange{
+.bg-orange {
   background-color: #e28011;
 }
 
-.bg-gray{
+.bg-gray {
   background-color: #c3c0c086;
 }
 
-.bg-pink{
+.bg-pink {
   background-color: #ee6ce3;
 }
 
-.bg-purple{
+.bg-purple {
   background-color: #be7aeb;
 }
 
-.bg-blue{
+.bg-blue {
   background-color: #5eadee;
 }
 
-.bg-yellow{
+.bg-yellow {
   background-color: #e7da65;
+}
+
+input{
+  outline:none;
+border: none;
+}
+
+::ng-deep .align{
+  padding: 10px !important ;
+}
+
+.labelslist{
+  padding-top: 10px;
+}
+
+
+::ng-deep mat-checkbox{
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
 }

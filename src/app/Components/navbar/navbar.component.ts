@@ -41,6 +41,7 @@ export class NavbarComponent implements OnDestroy, OnInit {
   ngOnInit(){
     this.dataService.recieveLabel.subscribe(response=>{
       this.GetAllLabels();
+      
     });
     this.GetAllLabels();
   }
@@ -78,6 +79,11 @@ export class NavbarComponent implements OnDestroy, OnInit {
      panelClass:'customDialog'
    });
    diaLogRef.afterClosed().subscribe()
+  }
+
+  routeToLabel(label:any){ 
+    this.dataService.sendlabel(label);
+    this.rout.navigateByUrl('home/label/'+label.labelName);
   }
 
 }

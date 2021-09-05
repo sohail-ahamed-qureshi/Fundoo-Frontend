@@ -1,23 +1,33 @@
-<div class="mainSection"  fxLayoutAlign="space-between"   *ngFor="let note of notes | search:searchWord">
-  <mat-card class="card" fxFlex.xs=100 [ngClass]="bgColor(note)"  >
-   <div fxLayout="row" >
-    <div  (click)="openDialog(note)" fxFlex="88%">
-      <div class="header" fxLayout="row" fxLayoutAlign="space-between center" >
-        <h2> {{ note.title }}</h2>
+<div class="mainSection" fxLayoutAlign="center center" *ngFor="let note of notes | search:searchWord">
+  <div class="card" fxFlex.xs=100 [ngClass]="bgColor(note)">
+    <div fxLayout="row">
+      <div (click)="openDialog(note)" fxFlex="88%">
+        <div fxLayout="row" fxLayoutAlign=" center">
+          <h2> {{ note.title }}</h2>
+        </div>
+        <div class="description">
+          <p>
+            {{ note.description }}
+          </p>
+        </div>
       </div>
-      <mat-card-content>
-        <p>
-          {{ note.description }}
-        </p>
-      </mat-card-content>
+      <button matTooltip="Pin" class="pinBtn my-button">
+        <mat-icon>push_pin</mat-icon>
+      </button>
     </div>
-      <button matTooltip="Pin" class="pinBtn my-button" ><mat-icon>push_pin</mat-icon></button>
-   </div>
+    <!-- labels here -->
+    <mat-chip-list  fxLayout="row">
+      <mat-chip  *ngFor="let label of note.labels" (removed)="remove(label, note)">
+        <span (click)="setVisible(label)"  > {{label.labelName}} </span>
+        <mat-icon matTooltip="Remove label" matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+
     <!-- labels here -->
 
     <mat-card-actions>
-    <app-action-buttons [card]="note"  ></app-action-buttons>
+      <app-action-buttons [card]="note"></app-action-buttons>
     </mat-card-actions>
-  </mat-card>
-</div>
+  </div>
 
+</div>

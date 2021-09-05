@@ -65,7 +65,7 @@
 
         <div class="navlist active" fxLayout="row" (mouseover)="isExpandable=true" 
           fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item routerLink="/home"
-          *ngFor="let label of labels"  >
+          *ngFor="let label of labels" (click)="routeToLabel(label)" >
           <button class="navBtn btnPosition" mat-icon-button>
             <mat-icon>label</mat-icon>
           </button>

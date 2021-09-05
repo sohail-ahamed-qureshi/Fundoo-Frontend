@@ -42,10 +42,30 @@
 </div>
 
 <mat-menu #more="matMenu">
-  <button mat-menu-item (click)="trashNote()">Delete note</button>
-  <button mat-menu-item>Add label</button>
+  <div *ngIf="!showLabels" >
+    <button mat-menu-item (click)="trashNote()">Delete note</button>
+    <button mat-menu-item  [matMenuTriggerFor]="Taglabel" >Add label</button>
+  </div>
+ 
 </mat-menu>
 
+
+<mat-menu class="align" [hasBackdrop]="false"   #Taglabel="matMenu" xPosition="after" >
+  <div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"oli88888>
+    <p>
+      Label note
+    </p>
+    <div fxLayout="row" fxLayoutAlign="center center" >
+      <input type="text" #searchLabel (keydown)="CreateNewLabel(searchLabel.value)" autocomplete="off" placeholder="Enter label name">
+      <mat-icon>search</mat-icon>
+    </div>
+    <div class="labelslist" >
+      <div *ngFor="let label of labels | labelSearch:searchLabel.value"  >
+        <mat-checkbox (click)="AddLabel(label)" class="labelName"> {{label.labelName}}</mat-checkbox>
+      </div>
+    </div>
+  </div>
+</mat-menu>
 
 <mat-menu  #aboveMenu="matMenu" yPosition="below">
   <div fxLayout="row"  class="spaces" fxLayoutAlign="space-between center">

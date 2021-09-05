@@ -44,85 +44,73 @@ export class HttpserviceService {
   }
 
   GetAllNotes(url: any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
      return this.http.get(this.baseUrl+url,httpOptions);
   }
 
   CreateNote(url:any, data:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.post(this.baseUrl+url, data, httpOptions);
   }
 
   UpdateNote(url:any, data: any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.put(this.baseUrl+url, data, httpOptions);
   }
 
   Archive(url:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.put(this.baseUrl+url,null ,httpOptions);
   }
 
   trashNote(url:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.delete(this.baseUrl+url,httpOptions);
   }
 
 
   GetAllLabels(url:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.get(this.baseUrl+url,httpOptions);
   }
 
   CreateLabel(url:any, data:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.post(this.baseUrl+url, data, httpOptions);
   }
 
   DeleteLabel(url:any){
-    let token = localStorage.getItem('token');
-    var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
-    let httpOptions = {
-      headers : headerObject
-    }
+    let httpOptions = this.GetHttpOptions();
     return this.http.delete(this.baseUrl+url, httpOptions);
   }
 
   UpdateLabel(url:any, data:any){
+    let httpOptions = this.GetHttpOptions();
+    return this.http.put(this.baseUrl+url,data, httpOptions);
+  }
+
+  GetLabeledNotes(url:any){
+    let httpOptions = this.GetHttpOptions();
+    return this.http.get(this.baseUrl+url, httpOptions);
+  }
+
+  DeleteLabelFromNote(url:any){
+    let httpOptions = this.GetHttpOptions();
+    return this.http.delete(this.baseUrl+url, httpOptions);
+  }
+
+  GetHttpOptions(){
     let token = localStorage.getItem('token');
     var headerObject = new HttpHeaders().set("Authorization", "Bearer " + token);
     let httpOptions = {
       headers : headerObject
     }
-    return this.http.put(this.baseUrl+url,data, httpOptions);
+    return httpOptions;
+  }
+
+  TagLabel(url:any,data:any){
+    let httpOptions = this.GetHttpOptions();
+    return this.http.post(this.baseUrl+url,data, httpOptions);
   }
 
 

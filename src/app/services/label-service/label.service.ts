@@ -15,12 +15,23 @@ export class LabelService {
     return this.httpService.CreateLabel("Notes/Label", data);
   }
 
-  DeleteLabel(data:any){
-    return this.httpService.DeleteLabel("Notes/"+data+"/Label");
+  DeleteLabel(data: any) {
+    return this.httpService.DeleteLabel("Notes/" + data + "/Label");
   }
 
-  UpdateLabel(data:any){
-    return this.httpService.UpdateLabel("Notes/Labels",data);
+  UpdateLabel(data: any) {
+    return this.httpService.UpdateLabel("Notes/Labels", data);
   }
 
+  GetLabeledNotes(labelId: any) {
+    return this.httpService.GetLabeledNotes('Notes/' + labelId + '/LabelledNotes');
+  }
+
+  DeleteLabelFromNote(data: any) {
+    return this.httpService.DeleteLabelFromNote("Notes/"+data.labelId+"/"+data.noteId+"/LabelledNotes");
+  }
+
+  TagLabel(data:any){
+    return this.httpService.TagLabel("Notes/TagLabel", data);
+  }
 }

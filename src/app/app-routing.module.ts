@@ -1,3 +1,4 @@
+import { LabelComponent } from './Components/label/label.component';
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './Components/arhive-notes/arhive-notes.component';
 import { ReminderNotesComponent } from './Components/reminder-notes/reminder-notes.component';
@@ -7,7 +8,7 @@ import { ResetpasswordComponent } from './Components/resetpassword/resetpassword
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from '../app/authentication.guard';
 
@@ -43,6 +44,10 @@ const routes: Routes = [
         path: 'trash',
         component: TrashNotesComponent,
       },
+      {
+        path: 'label/:labelName',
+        component:LabelComponent,
+      }
     ],
   },
 ];

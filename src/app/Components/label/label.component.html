@@ -1,5 +1,5 @@
 <div fxLayout="column">
     <app-take-note (messageEvent)="Refresh($event)"></app-take-note>
-    <app-get-all-notes  [notes]="notes" (event)="Refresh($event)" fxLayout="row wrap" fxFlex.xs=100
+    <app-get-all-notes  [notes]="notes" fxLayout="row wrap" fxFlex.xs=100
         fxLayout.xs="column wrap" fxLayoutGap="20px"></app-get-all-notes>
 </div>

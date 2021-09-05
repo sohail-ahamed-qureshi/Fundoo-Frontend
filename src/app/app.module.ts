@@ -36,8 +36,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { ActionButtonsComponent } from './Components/action-buttons/action-buttons.component';
 import { DialogContentComponent } from './Components/dialog-content/dialog-content.component';
-import { SearchPipe } from './Pipes/search.pipe';
+import { SearchPipe } from './Pipes/search/search.pipe';
 import { EditLabelComponent } from './Components/edit-label/edit-label.component';
+import { LabelComponent } from './Components/label/label.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { LabelSearchPipe } from './Pipes/labelSearch/label-search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,8 +60,9 @@ import { EditLabelComponent } from './Components/edit-label/edit-label.component
     ActionButtonsComponent,
     DialogContentComponent,
     GetAllNotesComponent,
-    SearchPipe,
-    EditLabelComponent
+    SearchPipe,LabelSearchPipe,
+    EditLabelComponent,
+    LabelComponent,
 
   ],
   imports: [
@@ -82,7 +86,8 @@ import { EditLabelComponent } from './Components/edit-label/edit-label.component
     MatTooltipModule,
     MatDialogModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

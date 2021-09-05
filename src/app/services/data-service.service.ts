@@ -9,9 +9,13 @@ export class DataServiceService {
   private messageSource = new BehaviorSubject([]);
   private eventSource = new BehaviorSubject([]);
   private labelsource = new BehaviorSubject([]);
+  private label = new BehaviorSubject([]);
+  private refresh = new BehaviorSubject([]);
   recievedMessage = this.messageSource.asObservable();
   recieveEvent = this.eventSource.asObservable();
   recieveLabel = this.labelsource.asObservable();
+  rcvLabel = this.label.asObservable();
+  refreshLabel = this.refresh.asObservable();
   constructor() { }
 
   sendMessage(message: any){
@@ -24,6 +28,13 @@ export class DataServiceService {
 
   sendlabelMessage(message:any){
     this.labelsource.next(message);
+  }
+  sendlabel(message:any){
+    this.label.next(message);
+  }
+
+  send(message:any){
+    this.refresh.next(message);
   }
 
 

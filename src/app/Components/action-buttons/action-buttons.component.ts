@@ -1,3 +1,4 @@
+import { LabelService } from './../../services/label-service/label.service';
 import { TrashNotesComponent } from './../trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './../arhive-notes/arhive-notes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,9 +15,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ActionButtonsComponent implements OnInit {
   @Input() card: any;
   @Output() colorEvent = new EventEmitter<any>();
+  labels:any;
   durationInSeconds = 3;
   isArchiveNotes = false;
   isDeleteNotes = false;
+  showLabels=false;
 
   white = "#ffffff";
   red = "#e75f5f";
@@ -40,7 +43,8 @@ export class ActionButtonsComponent implements OnInit {
   constructor(private noteService: NoteService,
     private dataService: DataServiceService,
     private snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private labelService: LabelService) { }
 
   ngOnInit(): void {
     let route: any = this.activatedRoute.snapshot.component
@@ -50,6 +54,29 @@ export class ActionButtonsComponent implements OnInit {
     if (route == TrashNotesComponent) {
       this.isDeleteNotes = true;
     }
+    this.dataService.recievedMessage.subscribe((response:any)=>{
+      this.labels=response;
+    })
+  }
+
+  AddLabel(label:any){
+    let reqpayLoad= {
+      noteId: this.card.noteId,
+      labelId:label.labelId
+    } 
+    this.labelService.TagLabel(reqpayLoad).subscribe((response)=>{
+      this.dataService.send(response);
+
+    }, error=>{
+      this.openSnackBar(error.error.message);
+    })
+  }
+
+  CreateNewLabel(searchLabel:any){
+    if(this.labels.length == 0){
+      console.log(searchLabel)
+    }
+    
   }
 
   Color(code: any) {

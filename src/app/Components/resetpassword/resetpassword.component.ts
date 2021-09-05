@@ -2,7 +2,7 @@ import { UserServiceService } from 'src/app/services/user-service/user-service.s
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-resetpassword',
@@ -14,14 +14,14 @@ export class ResetpasswordComponent implements OnInit {
   submitted = false;
   showPassword = false;
   token: any;
-  durationInSeconds=3;
-  output:any;
+  durationInSeconds = 3;
+  output: any;
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserServiceService,
     private activeRouter: ActivatedRoute,
     private _snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
@@ -38,7 +38,7 @@ export class ResetpasswordComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  openSnackBar(message: string ){
+  openSnackBar(message: string) {
     this._snackBar.open(message, 'OK', {
       duration: this.durationInSeconds * 1000,
     });
@@ -48,9 +48,9 @@ export class ResetpasswordComponent implements OnInit {
     if (this.resetPasswordForm.invalid) {
       return;
     }
-    let reqPayLoad ={
-      newPassword : this.resetPasswordForm.value.newPassword,
-      confirmPassword : this.resetPasswordForm.value.confirmPassword
+    let reqPayLoad = {
+      newPassword: this.resetPasswordForm.value.newPassword,
+      confirmPassword: this.resetPasswordForm.value.confirmPassword
     }
     this.token = this.activeRouter.snapshot.paramMap.get('token');
     if (this.token != null) {
@@ -59,12 +59,12 @@ export class ResetpasswordComponent implements OnInit {
         this.output = response;
         this.openSnackBar(JSON.stringify(this.output.message)
         );
-      } , (err:any)=>{
+      }, (err: any) => {
         console.log(err);
         this.output = err;
         this.openSnackBar(JSON.stringify(this.output.error));
       }
       );
-  }
+    }
   }
 }
