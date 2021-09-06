@@ -49,7 +49,7 @@ export class NavbarComponent implements OnDestroy, OnInit {
   GetAllLabels(){
     this.labelService.GetLabels("Notes/Labels").subscribe((response:any)=>{
     this.labels=response.labels;
-    this.dataService.sendMessage(this.labels);
+    this.dataService.sendMessage(response);
     })
   }
 

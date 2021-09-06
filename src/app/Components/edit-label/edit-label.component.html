@@ -17,31 +17,31 @@
     </div>
 </div>
 <div class="labels" *ngFor="let label of labels" fxFlexAlign="center" fxLayout="row"
-    fxLayoutAlign="space-between center"  >
+    fxLayoutAlign="space-between center" (mouseenter)="label.editable=true"  (mouseleave)="label.editable=false">
 
-    <div class="container"   *ngIf=" !editable">
+    <div class="container"   *ngIf="!label.editable">
         <button class="my-button" type="submit" >
             <mat-icon>label</mat-icon>
         </button>
     </div>
 
-    <div class="container"  *ngIf="editable" (click)="DeleteLabel(label)" >
+    <div class="container"  *ngIf="label.editable" (click)="DeleteLabel(label)" >
         <button matTooltip="Delete label" class="my-button">
             <mat-icon>delete</mat-icon>
         </button>
     </div>
-    <p class="labelName" *ngIf="!editable" (click)="editable=!editable && change=!change"  >
+    <p class="labelName" *ngIf="!label.editable" (click)="label.editable=!label.editable"   >
         {{label.labelName}}
     </p>
-    <div   *ngIf="editable">
+    <div   *ngIf="label.editable">
     <input type="text"  #updateLabel (input)="BindValue(updateLabel.value)" value="{{label.labelName}}" >
     </div>
-    <div class="container " *ngIf="editable"  (click)="UpdateLabel(label)">
+    <div class="container " *ngIf="label.editable"  (click)="UpdateLabel(label)">
         <button matTooltip="Update label" class="my-button">
             <mat-icon>check</mat-icon>
         </button>
     </div>
-    <div class="container " *ngIf="!editable">
+    <div class="container " *ngIf="!label.editable">
         <button matTooltip="Rename label" class="my-button">
             <mat-icon>edit</mat-icon>
         </button>

@@ -1,0 +1,74 @@
+
+
+.header{
+    border-bottom: 1px solid gray;
+}
+
+.header h3{
+    font-weight: 400;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+::ng-deep .mainContent{
+     padding: 20px 20px 0px 20px ;
+}
+
+.infoContainer{
+    margin: 10px 0px 0px 0px ;
+}
+
+
+.info{
+    padding: 10px 0px;
+}
+ .actionButtons{
+     height: 65px;
+     padding: 0px 20px 0px 0px;
+    background-color:#EDEDED ;
+ }
+
+ img{
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     margin-right: 10px;
+ }
+
+ .addIcon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+     border: 1px solid gray;
+     margin-right: 10px;
+ }
+
+ .icon{
+     font-size: 26px;
+     padding-top: 10px ;
+     padding-left: 8px;
+ }
+
+ input{
+     width: 80%;
+     border: none;
+     outline: none;
+ }
+
+ .ownerText{
+     text-transform: capitalize;
+     font-style: italic;
+ }
+
+ .OwnerInfo{
+     padding-top: 10px ;
+     padding-left: 12px ;
+ }
+
+ p{
+     line-height: 10px;
+ }
+ .UserName{
+     font-weight: bold;
+     text-transform: capitalize;
+ }

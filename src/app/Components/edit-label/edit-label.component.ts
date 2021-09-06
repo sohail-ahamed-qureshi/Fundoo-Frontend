@@ -20,17 +20,17 @@ export class EditLabelComponent implements OnInit {
   change = false;
   editable = false;
   labelForm!: FormGroup;
-  updateLabel:any;
+  updateLabel: any;
   error: string = "";
   durationInSeconds = 2;
   ngOnInit() {
     this.labelForm = this.formBuilder.group({
       newLabelName: ['', [Validators.required, Validators.minLength(2)]]
     });
-    this.dataService.recievedMessage.subscribe(response => {
-      this.labels = response;
+    this.dataService.recievedMessage.subscribe((response:any) => {
+      this.labels = response.labels;
     });
-    
+
   }
 
   AddLabel() {
@@ -71,29 +71,29 @@ export class EditLabelComponent implements OnInit {
 
   }
 
-  BindValue(updateLabel:any){
-    this.updateLabel=updateLabel;
+  BindValue(updateLabel: any) {
+    this.updateLabel = updateLabel;
   }
 
   UpdateLabel(label: any) {
-    if(label.labelName == this.updateLabel){
+    if (label.labelName == this.updateLabel) {
       return;
     }
     let reqpayLoad = {
-      labelId:label.labelId,
-      labelName:this.updateLabel,
-      userId:label.userId
+      labelId: label.labelId,
+      labelName: this.updateLabel,
+      userId: label.userId
     }
-    this.labelService.UpdateLabel(reqpayLoad).subscribe((response:any)=>{
+    this.labelService.UpdateLabel(reqpayLoad).subscribe((response: any) => {
       this.dataService.sendlabelMessage(response);
       this.openSnackBar(response.message);
-      this.editable=false;
+      this.editable = false;
     },
-    error=>{
-      this.openSnackBar(error.error.message);
-    }
+      error => {
+        this.openSnackBar(error.error.message);
+      }
     )
-      
+
   }
 
 

@@ -45,8 +45,8 @@ export class TakeNoteComponent implements OnInit {
     });
   }
 
-  ColorCode(bgColorCode:any){
-    this.color=bgColorCode;
+  ColorCode(bgColorCode: any) {
+    this.color = bgColorCode;
   }
 
 
@@ -75,6 +75,9 @@ export class TakeNoteComponent implements OnInit {
     this.isOpen = !this.isOpen;
     this.noteService.CreateNote('Notes', reqPayload).subscribe(
       (response: any) => {
+        this.color = this.white;
+        this.isArchive = false;
+        this.isPin = false;
         this.output = response;
         this.openSnackBar("Note has been Created");
         this.messageEvent.emit(this.output);

@@ -2,67 +2,26 @@
   fxLayoutAlign="space-between center">
   <p>Take a note..</p>
 </div>
-
-
-<form [formGroup]="takeNote" [style.background-color]="color" *ngIf="isOpen" class="takeNoteSection" fxFlex="40%" fxFlex.xs="80">
+<form [formGroup]="takeNote" [style.background-color]="color" *ngIf="isOpen" class="takeNoteSection" fxFlex="40%"
+  fxFlex.xs="80">
   <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
     <input *ngIf="isOpen" [style.background-color]="color" formControlName="title" placeholder="Title" />
     <div class="container" fxlayoutAlign="center center">
       <mat-icon class="my-button pinBtn" [class.clicked]="isPin" (click)="isPin=!isPin">push_pin</mat-icon>
     </div>
-
   </div>
   <div class="notesBody">
     <div fxLayout="row" fxLayoutAlign="space-between center">
-      <input type="text"  [style.background-color]="color" formControlName="description" placeholder="Take a note.." />
+      <input type="text" [style.background-color]="color" formControlName="description" placeholder="Take a note.." />
     </div>
-
-   
-
     <div class="noteAction" fxLayout="row" fxLayoutAlign.gt-sm="space-between center" fxLayoutAlign.lt-sm="none center">
-     
-      <app-action-buttons [component]="parentName" (colorEvent)="ColorCode($event)" ></app-action-buttons>
+      <app-action-buttons [component]="parentName" (colorEvent)="ColorCode($event)"></app-action-buttons>
       <div fxLayout="row">
         <button mat-button (click)="AddNote()">Close</button>
       </div>
     </div>
-
-    
   </div>
 </form>
-
-<!-- <mat-menu #aboveMenu="matMenu" yPosition="above">
-  <div fxLayout="row" class="space" fxLayoutAlign="space-between center">
-
-    <button matTooltip="Default" class="pallete bg-white" (click)="Color('#ffffff')" mat-menu-item></button>
-
-    <button matTooltip="Red" value="#e75f5f" (click)="Color('#e75f5f')" class="pallete bg-red" mat-menu-item></button>
-
-    <button matTooltip="Green" (click)="Color('#65e665')" class="pallete bg-green" mat-menu-item></button>
-  </div>
-
-  <div fxLayout="row" class="space" fxLayoutAlign="space-between center">
-
-    <button matTooltip="Ornage" (click)="Color('#e28011')" class="pallete bg-orange" mat-menu-item></button>
-
-    <button matTooltip="Pink" (click)="Color('#ee6ce3')" class="pallete bg-pink" mat-menu-item></button>
-
-    <button matTooltip="Gray" (click)="Color('#c3c0c086')" class="pallete bg-gray" mat-menu-item></button>
-
-  </div>
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-
-    <button matTooltip="purple" (click)="Color('#be7aeb')" class="pallete bg-purple" mat-menu-item></button>
-
-    <button matTooltip="Blue" (click)="Color('#5eadee')" class="pallete bg-blue " mat-menu-item></button>
-
-    <button matTooltip="Yellow" (click)="Color('#e7da65')" class="pallete bg-yellow" mat-menu-item></button>
-
-  </div>
-</mat-menu> -->
-
-
-
 <mat-menu #reminder="matMenu">
   <button mat-menu-item matTooltip="Select Date-time">
     <mat-icon>schedule</mat-icon> Pick date & time

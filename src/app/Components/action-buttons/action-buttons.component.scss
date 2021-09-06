@@ -94,3 +94,14 @@ border: none;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
+
+.customDialog{
+  mat-dialog-container{
+    padding: 0px;
+    margin: 0px;
+    min-height: 200px !important;
+    max-height: 600px !important;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+}

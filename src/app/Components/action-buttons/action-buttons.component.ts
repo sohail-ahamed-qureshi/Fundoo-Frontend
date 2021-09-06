@@ -1,3 +1,5 @@
+import { CollabDialogContentComponent } from './../collab-dialog-content/collab-dialog-content.component';
+import { MatDialog } from '@angular/material/dialog';
 import { LabelService } from './../../services/label-service/label.service';
 import { TrashNotesComponent } from './../trash-notes/trash-notes.component';
 import { ArhiveNotesComponent } from './../arhive-notes/arhive-notes.component';
@@ -48,7 +50,8 @@ export class ActionButtonsComponent implements OnInit {
     private dataService: DataServiceService,
     private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
-    private labelService: LabelService) { }
+    private labelService: LabelService,
+    public dialog: MatDialog) { }
 
     @Input() component:any;
     takeANote=false;
@@ -61,8 +64,6 @@ export class ActionButtonsComponent implements OnInit {
       this.GetAllNotes= true;
     }
 
-
-
     let route: any = this.activatedRoute.snapshot.component
     if (route == ArhiveNotesComponent) {
       this.isArchiveNotes = true;
@@ -71,8 +72,16 @@ export class ActionButtonsComponent implements OnInit {
       this.isDeleteNotes = true;
     }
     this.dataService.recievedMessage.subscribe((response:any)=>{
-      this.labels=response;
+      this.labels=response.labels;
     })
+  }
+
+  OpenCollab(card:any){
+    let dialogRef = this.dialog.open(CollabDialogContentComponent, {
+      width: '600px',
+      data: card,
+      panelClass:'customDialog'
+    });
   }
 
   AddLabel(label:any){
@@ -81,8 +90,7 @@ export class ActionButtonsComponent implements OnInit {
       labelId:label.labelId
     } 
     this.labelService.TagLabel(reqpayLoad).subscribe((response)=>{
-      this.dataService.send(response);
-      
+      this.dataService.sendMessage(response);
     }, error=>{
       this.openSnackBar(error.error.message);
     })
@@ -175,7 +183,7 @@ export class ActionButtonsComponent implements OnInit {
 
   OnUpdate(colorData:any) {
     this.noteService.UpdateNote('Notes', colorData).subscribe((response:any) => {
-      this.dataService.sendMessage(response.data);
+      this.dataService.send(response);
     },
       error => {
         this.openSnackBar(error.message);
@@ -191,7 +199,7 @@ export class ActionButtonsComponent implements OnInit {
   Archive() {
     if(this.GetAllNotes){
       this.noteService.Archive('Notes/' + this.card.noteId + '/Archive').subscribe((response: any) => {
-        this.dataService.sendMessage(response);
+        this.dataService.send(response);
         this.openSnackBar(response.message)
       },
         error => {
@@ -209,7 +217,7 @@ export class ActionButtonsComponent implements OnInit {
 
   trashNote() {
     this.noteService.trashNote('Notes/' + this.card.noteId + '/trash').subscribe((response: any) => {
-      this.dataService.sendMessage(response);
+      this.dataService.send(response);
       this.openSnackBar(response.message)
     },
       error => {
@@ -220,7 +228,7 @@ export class ActionButtonsComponent implements OnInit {
 
   DeleteNote() {
     this.noteService.trashNote('Notes/' + this.card.noteId).subscribe((response: any) => {
-      this.dataService.sendMessage(response);
+      this.dataService.send(response);
       this.openSnackBar(response.message)
     },
       error => {

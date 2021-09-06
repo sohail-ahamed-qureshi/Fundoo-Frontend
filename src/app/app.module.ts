@@ -41,6 +41,7 @@ import { EditLabelComponent } from './Components/edit-label/edit-label.component
 import { LabelComponent } from './Components/label/label.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { LabelSearchPipe } from './Pipes/labelSearch/label-search.pipe';
+import { CollabDialogContentComponent } from './Components/collab-dialog-content/collab-dialog-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { LabelSearchPipe } from './Pipes/labelSearch/label-search.pipe';
     SearchPipe,LabelSearchPipe,
     EditLabelComponent,
     LabelComponent,
+    CollabDialogContentComponent,
 
   ],
   imports: [
